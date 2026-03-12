@@ -9,7 +9,9 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root { --blue: #003087; --blue-mid: #1a4fa0; --red: #e60012; --dark: #1a1a1a; --gray: #666; --white: #fff; --bg: #f0f2f8; }
+  html, body { height: 100%; }
   body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--dark); min-height: 100vh; }
+
 
   /* LOGIN */
   .login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #03051a 0%, #003087 100%); }
@@ -25,11 +27,12 @@
   .login-err { color: var(--red); font-size: 13px; margin-top: 12px; display: none; }
 
   /* ADMIN LAYOUT */
-  .admin-layout { display: none; }
+  .admin-layout { display: none; min-height: 100vh; }
   .sidebar {
-    position: fixed; left: 0; top: 0; bottom: 0; width: 240px;
+    position: fixed; left: 0; top: 0; width: 240px; height: 100vh;
     background: var(--blue); color: white; padding: 0;
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; overflow-y: auto;
+    z-index: 100;
   }
   .sidebar-brand { padding: 28px 24px; border-bottom: 1px solid rgba(255,255,255,0.15); }
   .sidebar-brand h2 { font-family: 'Barlow Condensed',sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
@@ -236,7 +239,8 @@ function doLogin() {
   const pass = document.getElementById('loginPass').value;
   if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
     document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('adminLayout').style.display = 'flex';
+    const layout = document.getElementById('adminLayout');
+    layout.style.display = 'block';
     loadAll();
   } else {
     document.getElementById('loginErr').style.display = 'block';
