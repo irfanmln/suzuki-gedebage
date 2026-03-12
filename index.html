@@ -4,137 +4,154 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home - Suzuki Gedebage Bandung</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --blue: #003087; --blue-mid: #1a4fa0; --red: #e60012;
-    --dark: #1a1a1a; --gray: #555; --light: #f5f5f5; --white: #fff;
-  }
-  body { font-family: 'Barlow', sans-serif; color: var(--dark); overflow-x: hidden; }
-  a { text-decoration: none; color: inherit; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--blue:#003087;--blue-mid:#1a4fa0;--red:#e60012;--dark:#1a1a1a;--gray:#555;--white:#fff;}
+body{font-family:'Montserrat',sans-serif;color:var(--dark);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
 
-  /* NAVBAR */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: var(--white);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px; height: 72px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  }
-  .nav-logo { display: flex; align-items: center; }
-  .nav-links { display: flex; align-items: center; gap: 32px; }
-  .nav-links a { font-weight: 600; font-size: 14px; letter-spacing: 0.5px; color: var(--dark); text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
-  .nav-links a:hover { color: var(--blue); }
-  .nav-search { cursor: pointer; color: var(--gray); }
-  .nav-search svg { display: block; }
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+.nav-logo img{height:38px;width:auto;display:block;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-weight:700;font-size:13px;letter-spacing:0.8px;color:var(--dark);text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--blue);}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-ham span{display:block;width:24px;height:2px;background:var(--dark);transition:.3s;}
+.nav-mobile{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.1);padding:16px 0;}
+.nav-mobile a{display:block;padding:14px 24px;font-size:14px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--dark);border-bottom:1px solid #f0f0f0;}
+.nav-mobile a:last-child{border-bottom:none;}
+.nav-mobile.open{display:block;}
 
-  /* HERO SLIDER */
-  .hero { position: relative; width: 100%; height: calc(100vh - 72px); min-height: 520px; margin-top: 72px; overflow: hidden; }
-  .slides { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(.77,0,.18,1); will-change: transform; }
-  .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
-  .hero-arrow {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.45);
-    color: white; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 28px; transition: background 0.2s; z-index: 10; user-select: none;
-  }
-  .hero-arrow:hover { background: rgba(255,255,255,0.28); }
-  .hero-arrow.left { left: 20px; }
-  .hero-arrow.right { right: 20px; }
-  .hero-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
-  .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.45); cursor: pointer; transition: background 0.2s, transform 0.2s; }
-  .dot.active { background: white; transform: scale(1.3); }
+/* HERO SLIDER */
+.hero{position:relative;width:100%;height:calc(100vh - 68px);min-height:500px;margin-top:68px;overflow:hidden;}
+.slides{display:flex;height:100%;transition:transform 0.6s cubic-bezier(.77,0,.18,1);}
+.slide{min-width:100%;height:100%;background-size:cover;background-position:center;position:relative;display:flex;align-items:center;justify-content:center;}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.45);color:white;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:26px;transition:background 0.2s;z-index:10;user-select:none;}
+.hero-arrow:hover{background:rgba(255,255,255,0.28);}
+.hero-arrow.left{left:20px;}
+.hero-arrow.right{right:20px;}
+.hero-dots{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10;}
+.dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.45);cursor:pointer;transition:background 0.2s,transform 0.2s;}
+.dot.active{background:white;transform:scale(1.3);}
+.slide-text{text-align:center;color:white;z-index:1;padding:40px 20px;}
+.slide-sub{font-size:13px;letter-spacing:5px;opacity:0.75;margin-bottom:8px;text-transform:uppercase;font-weight:600;}
+.slide-title{font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.9;margin-bottom:18px;letter-spacing:2px;}
+.slide-price{font-size:17px;opacity:0.85;letter-spacing:1px;font-weight:500;}
 
-  /* CATALOG */
-  .catalog-section { padding: 64px 80px 80px; background: var(--white); }
-  .catalog-section h2 { font-family: 'Barlow Condensed',sans-serif; font-size: 32px; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .catalog-section h2 span { color: var(--dark); }
-  .cat-label { font-size: 15px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin: 36px 0 20px; border-bottom: 2px solid var(--blue); padding-bottom: 8px; display: inline-block; }
-  .car-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px 32px; }
-  .car-card { cursor: pointer; transition: transform 0.2s; }
-  .car-card:hover { transform: translateY(-4px); }
-  .car-img-wrap { height: 160px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .car-img-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s; }
-  .car-card:hover .car-img-wrap img { transform: scale(1.05); }
-  .car-name { display: flex; align-items: center; justify-content: space-between; font-weight: 700; font-size: 15px; text-transform: uppercase; padding-top: 12px; border-top: 2px solid var(--dark); margin-top: 10px; }
-  .car-price { font-size: 13px; color: var(--gray); margin-top: 5px; border-top: 1px solid #ddd; padding-top: 6px; }
+/* CATALOG */
+.catalog-section{padding:64px 80px 80px;background:var(--white);}
+.catalog-section h2{font-size:30px;font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.catalog-section h2 span{color:var(--dark);}
+.cat-label{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin:36px 0 20px;border-bottom:2px solid var(--blue);padding-bottom:8px;display:inline-block;}
+.car-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 28px;}
+.car-card{cursor:pointer;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+.car-card:hover{transform:translateY(-4px);}
+.car-img-wrap{height:155px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.car-img-wrap img{width:100%;height:100%;object-fit:contain;transition:transform 0.3s;}
+.car-card:hover .car-img-wrap img{transform:scale(1.05);}
+.car-name{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:14px;text-transform:uppercase;padding-top:12px;border-top:2px solid var(--dark);margin-top:10px;letter-spacing:0.5px;}
+.car-price{font-size:12px;color:var(--gray);margin-top:5px;border-top:1px solid #ddd;padding-top:6px;font-weight:500;}
 
-  /* WHY */
-  .why-section { padding: 72px 80px; text-align: center; background: #fafafa; }
-  .why-section h2 { font-family: 'Barlow Condensed',sans-serif; font-size: 30px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 48px; }
-  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .why-item h3 { font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin: 16px 0 10px; }
-  .why-item p { font-size: 14px; color: var(--gray); line-height: 1.7; }
-  .why-icon { font-size: 44px; }
+/* WHY */
+.why-section{padding:72px 80px;text-align:center;background:#fafafa;}
+.why-section h2{font-size:26px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-bottom:48px;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.why-item h3{font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin:16px 0 10px;}
+.why-item p{font-size:14px;color:var(--gray);line-height:1.7;}
+.why-icon{font-size:44px;}
 
-  /* VIDEO */
-  .video-section { padding: 64px 80px; background: var(--white); }
-  .video-section h2 { font-family: 'Barlow Condensed',sans-serif; font-size: 30px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin-bottom: 40px; }
-  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .video-thumb { position: relative; background: #111; border-radius: 4px; overflow: hidden; cursor: pointer; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
-  .video-thumb:hover .yt-play { transform: scale(1.1); }
-  .yt-play { width: 60px; height: 42px; background: #ff0000; border-radius: 10px; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform 0.2s; }
-  .yt-play::after { content: ''; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
-  .video-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.55); padding: 7px 12px; color: white; font-size: 12px; font-weight: 600; text-align: center; }
-  .video-label { position: absolute; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.92); padding: 6px 10px; font-size: 12px; font-weight: 600; color: #333; display: flex; align-items: center; gap: 8px; }
-  .yt-badge { background: #ff0000; color: white; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+/* VIDEO */
+.video-section{padding:64px 80px;background:var(--white);}
+.video-section h2{font-size:26px;font-weight:900;letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:40px;}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.video-thumb{position:relative;background:#111;border-radius:4px;overflow:hidden;cursor:pointer;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-decoration:none;}
+.video-thumb:hover .yt-play{transform:scale(1.1);}
+.yt-play{width:60px;height:42px;background:#ff0000;border-radius:10px;display:flex;align-items:center;justify-content:center;z-index:2;transition:transform 0.2s;}
+.yt-play::after{content:'';border-left:20px solid white;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px;}
+.video-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);padding:7px 12px;color:white;font-size:12px;font-weight:600;text-align:center;}
+.video-label{position:absolute;top:0;left:0;right:0;background:rgba(255,255,255,0.92);padding:6px 10px;font-size:12px;font-weight:600;color:#333;display:flex;align-items:center;gap:8px;}
+.yt-badge{background:#ff0000;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;}
 
-  /* CTA BANNER */
-  .cta-banner { position: relative; padding: 80px 40px; background: linear-gradient(135deg, #0a2573 0%, #1a4fa0 60%, #0d3a8a 100%); text-align: center; overflow: hidden; }
-  .cta-content { position: relative; z-index: 2; }
-  .cta-content h2 { font-family: 'Barlow Condensed',sans-serif; font-size: 34px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 28px; }
-  .cta-btn { display: inline-block; background: var(--red); color: white; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 40px; cursor: pointer; border: none; transition: background 0.2s, transform 0.2s; }
-  .cta-btn:hover { background: #c0000e; transform: translateY(-2px); }
+/* CTA */
+.cta-banner{position:relative;padding:80px 40px;background:linear-gradient(135deg,#0a2573 0%,#1a4fa0 60%,#0d3a8a 100%);text-align:center;}
+.cta-content h2{font-size:30px;font-weight:900;color:white;text-transform:uppercase;letter-spacing:1px;margin-bottom:28px;}
+.cta-btn{display:inline-block;background:var(--red);color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:14px 40px;cursor:pointer;border:none;transition:background 0.2s,transform 0.2s;}
+.cta-btn:hover{background:#c0000e;transform:translateY(-2px);}
 
-  /* FOOTER */
-  footer { background: var(--white); padding: 56px 80px 28px; border-top: 1px solid #e0e0e0; }
-  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
-  .footer-addr p { font-size: 13px; color: var(--gray); line-height: 1.7; }
-  .footer-addr .addr-label { font-weight: 700; font-size: 13px; color: var(--dark); margin-bottom: 4px; }
-  .footer-contact h3 { font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-  .contact-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--gray); margin-bottom: 10px; }
-  .contact-item svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--blue); }
-  .footer-map { border-radius: 4px; overflow: hidden; height: 170px; }
-  .footer-map iframe { width: 100%; height: 100%; border: none; }
-  .footer-copy { border-top: 1px solid #e0e0e0; padding-top: 20px; text-align: center; font-size: 12px; color: var(--gray); }
-  .footer-copy a { color: var(--blue); }
-  .footer-logo { margin-bottom: 20px; }
+/* FOOTER */
+footer{background:var(--white);padding:56px 80px 100px;border-top:1px solid #e0e0e0;}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-addr p{font-size:13px;color:var(--gray);line-height:1.7;}
+.addr-label{font-weight:700;font-size:13px;color:var(--dark);margin-bottom:4px;}
+.footer-contact h3{font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray);margin-bottom:10px;}
+.contact-item svg{width:16px;height:16px;flex-shrink:0;color:var(--blue);}
+.footer-map{border-radius:4px;overflow:hidden;height:170px;}
+.footer-map iframe{width:100%;height:100%;border:none;}
+.footer-copy{border-top:1px solid #e0e0e0;padding-top:20px;text-align:center;font-size:12px;color:var(--gray);}
+.footer-copy a{color:var(--blue);}
+.footer-logo{margin-bottom:20px;}
 
-  /* FLOATING BAR */
-  .floating-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 999; display: flex; }
-  .float-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 12px 36px; background: var(--blue); color: white; font-weight: 700; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer; border: 1px solid rgba(255,255,255,0.15); transition: background 0.2s; min-width: 160px; }
-  .float-btn:hover { background: var(--blue-mid); }
-  .float-btn svg { width: 22px; height: 22px; }
+/* FLOATING BAR */
+.floating-bar{position:fixed;bottom:0;left:0;width:100%;z-index:999;display:flex;}
+.float-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 8px;background:var(--blue);color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;border:none;border-right:1px solid rgba(255,255,255,0.15);transition:background 0.2s;}
+.float-btn:last-child{border-right:none;}
+.float-btn:hover{background:var(--blue-mid);}
+.float-btn svg{width:22px;height:22px;}
 
-  /* MODAL */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 2000; align-items: center; justify-content: center; }
-  .modal-overlay.open { display: flex; }
-  .modal { background: white; width: 90%; max-width: 860px; max-height: 90vh; overflow-y: auto; position: relative; padding: 40px 48px 48px; animation: modalIn 0.25s ease; }
-  @keyframes modalIn { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
-  .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; color: #333; border: none; transition: background 0.2s; }
-  .modal-close:hover { background: #ddd; }
-  .modal h2 { font-family: 'Barlow Condensed',sans-serif; font-size: 28px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 32px; }
-  .form-group { margin-bottom: 24px; }
-  .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
-  .form-group input, .form-group select { width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #ccc; font-family: 'Barlow',sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; background: transparent; }
-  .form-group input:focus, .form-group select:focus { border-bottom-color: var(--blue); }
-  .form-group input[type="date"] { color: #555; }
-  .form-group select { appearance: none; cursor: pointer; }
-  .select-wrap { position: relative; }
-  .select-wrap::after { content: '▾'; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #888; }
-  .submit-btn { background: var(--blue); color: white; border: none; padding: 13px 32px; font-family: 'Barlow',sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
-  .submit-btn:hover { background: var(--blue-mid); }
-  .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
-  .form-success { display: none; text-align: center; padding: 24px 0; }
-  .form-success .check { font-size: 52px; margin-bottom: 12px; }
-  .form-success h3 { font-family: 'Barlow Condensed',sans-serif; font-size: 22px; font-weight: 700; color: var(--blue); }
-  .form-success p { color: var(--gray); margin-top: 8px; }
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2000;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;position:relative;padding:40px;border-radius:8px;animation:modalIn 0.25s ease;}
+@keyframes modalIn{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+.modal-close{position:absolute;top:14px;right:16px;width:32px;height:32px;background:#eee;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#333;border:none;transition:background 0.2s;}
+.modal-close:hover{background:#ddd;}
+.modal h2{font-size:22px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-bottom:28px;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--dark);margin-bottom:8px;text-transform:uppercase;}
+.form-group input,.form-group select{width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:5px;font-family:'Montserrat',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus{border-color:var(--blue);}
+.submit-btn{width:100%;background:var(--blue);color:white;border:none;padding:14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:5px;transition:background 0.2s;margin-top:4px;}
+.submit-btn:hover{background:var(--blue-mid);}
+.submit-btn:disabled{background:#aaa;cursor:not-allowed;}
+.form-success{display:none;text-align:center;padding:24px 0;}
+.form-success .check{font-size:52px;margin-bottom:12px;}
+.form-success h3{font-size:20px;font-weight:800;color:var(--blue);}
+.form-success p{color:var(--gray);margin-top:8px;font-size:14px;}
 
-  /* BACK TO TOP */
-  .back-top { position: fixed; bottom: 80px; right: 24px; width: 40px; height: 40px; background: var(--blue); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 998; opacity: 0; transition: opacity 0.3s; font-size: 18px; }
-  .back-top.visible { opacity: 1; }
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:80px;right:20px;width:40px;height:40px;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:998;opacity:0;transition:opacity 0.3s;font-size:18px;border-radius:4px;}
+.back-top.visible{opacity:1;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .car-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .video-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .nav-ham{display:flex;}
+  .hero{height:calc(100svh - 68px);}
+  .slide-title{font-size:48px;}
+  .slide-price{font-size:15px;}
+  .catalog-section{padding:40px 20px 50px;}
+  .car-grid{grid-template-columns:repeat(2,1fr);gap:16px 16px;}
+  .car-img-wrap{height:110px;}
+  .why-section{padding:48px 20px;}
+  .why-grid{grid-template-columns:1fr;}
+  .video-section{padding:40px 20px;}
+  .video-grid{grid-template-columns:1fr;}
+  .cta-banner{padding:56px 24px;}
+  .cta-content h2{font-size:22px;}
+  footer{padding:40px 20px 100px;}
+  .footer-grid{grid-template-columns:1fr;gap:28px;}
+  .float-btn{font-size:10px;padding:10px 4px;}
+  .float-btn svg{width:20px;height:20px;}
+}
 </style>
 </head>
 <body>
@@ -142,47 +159,52 @@
 <!-- NAVBAR -->
 <nav>
   <div class="nav-logo">
-    <a href="index.html"><img src="https://suzukigedebage.com/wp-content/uploads/2025/06/logo-suzuki-300x57.webp" alt="Suzuki Gedebage" style="height:40px;width:auto;display:block;"></a>
+    <a href="index.html"><img src="https://suzukigedebage.com/wp-content/uploads/2025/06/logo-suzuki-300x57.webp" alt="Suzuki Gedebage"></a>
   </div>
   <div class="nav-links">
     <a href="index.html">HOME</a>
     <a href="produk.html">PRODUK</a>
-    <a onclick="scrollToFooter()">HUBUNGI KAMI</a>
-    <div class="nav-search">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    </div>
+    <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
+  </div>
+  <div class="nav-ham" onclick="toggleMenu()" id="hamBtn">
+    <span></span><span></span><span></span>
   </div>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">HOME</a>
+  <a href="produk.html">PRODUK</a>
+  <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
+</div>
 
 <!-- HERO SLIDER -->
 <section class="hero" id="hero">
   <div class="slides" id="slides">
     <div class="slide" style="background:linear-gradient(160deg,#0a1628 0%,#1c3a6e 45%,#7a5c1e 100%);">
-      <div style="text-align:center;color:white;z-index:1;padding:40px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:5px;opacity:0.75;margin-bottom:6px;text-transform:uppercase">The New Era</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.95;margin-bottom:16px;">GRAND<br>VITARA</div>
-        <div style="font-size:17px;opacity:0.8;letter-spacing:1px;">Mulai Rp 421.900.000</div>
+      <div class="slide-text">
+        <div class="slide-sub">The New Era</div>
+        <div class="slide-title">GRAND<br>VITARA</div>
+        <div class="slide-price">Mulai Rp 421.900.000</div>
       </div>
     </div>
     <div class="slide" style="background:linear-gradient(160deg,#06101f 0%,#0d2a50 45%,#1a4a80 100%);">
-      <div style="text-align:center;color:white;z-index:1;padding:40px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:5px;opacity:0.75;margin-bottom:6px;text-transform:uppercase">All New</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.95;margin-bottom:16px;">NEW<br>XL7</div>
-        <div style="font-size:17px;opacity:0.8;letter-spacing:1px;">Mulai Rp 269.900.000</div>
+      <div class="slide-text">
+        <div class="slide-sub">All New</div>
+        <div class="slide-title">NEW<br>XL7</div>
+        <div class="slide-price">Mulai Rp 269.900.000</div>
       </div>
     </div>
     <div class="slide" style="background:linear-gradient(160deg,#0f1a05 0%,#2a4a08 45%,#4a7010 100%);">
-      <div style="text-align:center;color:white;z-index:1;padding:40px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:5px;opacity:0.75;margin-bottom:6px;text-transform:uppercase">Iconic 4WD</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.95;margin-bottom:16px;">JIMNY</div>
-        <div style="font-size:17px;opacity:0.8;letter-spacing:1px;">Mulai Rp 511.550.000</div>
+      <div class="slide-text">
+        <div class="slide-sub">Iconic 4WD</div>
+        <div class="slide-title">JIMNY</div>
+        <div class="slide-price">Mulai Rp 511.550.000</div>
       </div>
     </div>
     <div class="slide" style="background:linear-gradient(160deg,#1a0808 0%,#3a1010 45%,#6a2020 100%);">
-      <div style="text-align:center;color:white;z-index:1;padding:40px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:5px;opacity:0.75;margin-bottom:6px;text-transform:uppercase">Bold & Smart</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.95;margin-bottom:16px;">FRONX</div>
-        <div style="font-size:17px;opacity:0.8;letter-spacing:1px;">Mulai Rp 261.800.000</div>
+      <div class="slide-text">
+        <div class="slide-sub">Bold & Smart</div>
+        <div class="slide-title">FRONX</div>
+        <div class="slide-price">Mulai Rp 261.800.000</div>
       </div>
     </div>
   </div>
@@ -191,54 +213,56 @@
   <div class="hero-dots" id="dots"></div>
 </section>
 
-<!-- FIND YOUR PERFECT SUZUKI -->
+<!-- CATALOG -->
 <section class="catalog-section">
   <h2>FIND YOUR PERFECT <span>SUZUKI</span></h2>
+
   <div><span class="cat-label">PASSENGER CAR</span></div>
   <div class="car-grid">
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/grand-vitara.png" onerror="this.style.opacity=0.3" alt="Grand Vitara"></div>
+    <a class="car-card" href="grand-vitara">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/grand-vitara.png" onerror="this.style.opacity=0.2" alt="Grand Vitara"></div>
       <div class="car-name">GRAND VITARA <span>→</span></div>
       <div class="car-price">MULAI 421.900.000 IDR</div>
-    </div>
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/s-presso.png" onerror="this.style.opacity=0.3" alt="S-Presso"></div>
+    </a>
+    <a class="car-card" href="s-presso">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/s-presso.png" onerror="this.style.opacity=0.2" alt="S-Presso"></div>
       <div class="car-name">S-PRESSO <span>→</span></div>
       <div class="car-price">MULAI 176.600.000 IDR</div>
-    </div>
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/apv.png" onerror="this.style.opacity=0.3" alt="APV"></div>
+    </a>
+    <a class="car-card" href="apv">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/apv.png" onerror="this.style.opacity=0.2" alt="APV"></div>
       <div class="car-name">APV <span>→</span></div>
       <div class="car-price">MULAI 228.200.000 IDR</div>
-    </div>
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/xl7.png" onerror="this.style.opacity=0.3" alt="New XL7"></div>
+    </a>
+    <a class="car-card" href="new-xl7">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/xl7.png" onerror="this.style.opacity=0.2" alt="New XL7"></div>
       <div class="car-name">NEW XL7 <span>→</span></div>
       <div class="car-price">MULAI 269.900.000 IDR</div>
-    </div>
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/jimny.png" onerror="this.style.opacity=0.3" alt="Jimny"></div>
+    </a>
+    <a class="car-card" href="jimny">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/jimny.png" onerror="this.style.opacity=0.2" alt="Jimny"></div>
       <div class="car-name">JIMNY <span>→</span></div>
       <div class="car-price">MULAI 511.550.000 IDR</div>
-    </div>
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/fronx.png" onerror="this.style.opacity=0.3" alt="Fronx"></div>
+    </a>
+    <a class="car-card" href="fronx">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/fronx.png" onerror="this.style.opacity=0.2" alt="Fronx"></div>
       <div class="car-name">FRONX <span>→</span></div>
       <div class="car-price">MULAI 261.800.000 IDR</div>
-    </div>
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/all-new-ertiga.png" onerror="this.style.opacity=0.3" alt="Ertiga"></div>
+    </a>
+    <a class="car-card" href="all-new-ertiga">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/all-new-ertiga.png" onerror="this.style.opacity=0.2" alt="Ertiga"></div>
       <div class="car-name">ALL NEW ERTIGA <span>→</span></div>
       <div class="car-price">MULAI 241.750.000 IDR</div>
-    </div>
+    </a>
   </div>
+
   <div style="margin-top:48px;"><span class="cat-label">COMMERCIALS CAR</span></div>
   <div class="car-grid">
-    <div class="car-card" onclick="location.href='produk.html'">
-      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/carry-pick-up.png" onerror="this.style.opacity=0.3" alt="Carry Pick Up"></div>
+    <a class="car-card" href="new-carry-pick-up">
+      <div class="car-img-wrap"><img src="https://www.suzuki.co.id/uploads/model/listing/carry-pick-up.png" onerror="this.style.opacity=0.2" alt="Carry Pick Up"></div>
       <div class="car-name">NEW CARRY PICK UP <span>→</span></div>
-      <div class="car-price">MULAI 189.500.000 IDR</div>
-    </div>
+      <div class="car-price">MULAI 175.500.000 IDR</div>
+    </a>
   </div>
 </section>
 
@@ -269,34 +293,19 @@
   <h2>GALERI VIDEO SUZUKI</h2>
   <div class="video-grid">
     <a href="https://www.youtube.com/watch?v=dRlmMgA3Hn8" target="_blank" class="video-thumb" style="background:#0f0f1a;">
-      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Educational C...</div>
+      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Adaptive Cruise Control</div>
       <div class="yt-play"></div>
-      <div class="video-caption">Adaptive Cruise Control ( ACC )</div>
+      <div class="video-caption">Adaptive Cruise Control (ACC)</div>
     </a>
-    <a href="https://www.youtube.com/watch?v=dRlmMgA3Hn8" target="_blank" class="video-thumb" style="background:#0f0f1a;">
-      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Educational C...</div>
+    <a href="https://www.youtube.com/watch?v=mRDt2rKbXcs" target="_blank" class="video-thumb" style="background:#0f1520;">
+      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Experience</div>
       <div class="yt-play"></div>
-      <div class="video-caption">RCTA ( Rear Cross Traffic Alert )</div>
+      <div class="video-caption">Rasakan Pengalaman Fronx</div>
     </a>
-    <a href="https://www.youtube.com/watch?v=dRlmMgA3Hn8" target="_blank" class="video-thumb" style="background:#0f0f1a;">
-      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Educational C...</div>
+    <a href="https://www.youtube.com/watch?v=OuE6L8RVe0Q" target="_blank" class="video-thumb" style="background:#0a1505;">
+      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki New Carry Pick Up</div>
       <div class="yt-play"></div>
-      <div class="video-caption">Around View Monitor (AVM)</div>
-    </a>
-    <a href="https://www.youtube.com/watch?v=dRlmMgA3Hn8" target="_blank" class="video-thumb" style="background:#0f0f1a;">
-      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Educational C...</div>
-      <div class="yt-play"></div>
-      <div class="video-caption">Lane Keep Assist ( LKA )</div>
-    </a>
-    <a href="https://www.youtube.com/watch?v=dRlmMgA3Hn8" target="_blank" class="video-thumb" style="background:#0f0f1a;">
-      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Educational C...</div>
-      <div class="yt-play"></div>
-      <div class="video-caption">Head Up Display</div>
-    </a>
-    <a href="https://www.youtube.com/watch?v=dRlmMgA3Hn8" target="_blank" class="video-thumb" style="background:#0f0f1a;">
-      <div class="video-label"><span class="yt-badge">▶ YouTube</span> Suzuki Fronx | Educational C...</div>
-      <div class="yt-play"></div>
-      <div class="video-caption">Lane Departure Warning (LDW)</div>
+      <div class="video-caption">New Carry Pick Up</div>
     </a>
   </div>
 </section>
@@ -305,7 +314,7 @@
 <section class="cta-banner">
   <div class="cta-content">
     <h2>Segera Konsultasikan Harga Mobil Impian Anda Sekarang Juga Gratis.</h2>
-    <button class="cta-btn" onclick="scrollToFooter()">HUBUNGI KAMI</button>
+    <button class="cta-btn" onclick="openModal('testDriveModal')">TEST DRIVE SEKARANG</button>
   </div>
 </section>
 
@@ -324,12 +333,8 @@
     <div class="footer-contact">
       <h3>INFORMASI KONTAK</h3>
       <div class="contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        +628-5173-340-806
-      </div>
-      <div class="contact-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.09 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +628-5173-340-806
+        +62 851-7334-0806
       </div>
       <div class="contact-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -338,6 +343,10 @@
       <div class="contact-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         @suzukigedebage
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.5 3.5 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        <a href="https://wa.me/6285173340806" target="_blank" style="color:inherit;">+62 851-7334-0806</a>
       </div>
     </div>
     <div class="footer-map">
@@ -354,18 +363,18 @@
 
 <!-- FLOATING BAR -->
 <div class="floating-bar">
-  <div class="float-btn" onclick="openModal('testDriveModal')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+  <button class="float-btn" onclick="openModal('testDriveModal')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
     TEST DRIVE
-  </div>
-  <div class="float-btn" onclick="openModal('kreditModal')">
+  </button>
+  <button class="float-btn" onclick="openModal('kreditModal')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
     SIMULASI KREDIT
-  </div>
-  <div class="float-btn" onclick="scrollToFooter()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <button class="float-btn" onclick="window.open('https://wa.me/6285173340806','_blank')">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.5 3.5 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
     HUBUNGI KAMI
-  </div>
+  </button>
 </div>
 
 <!-- MODAL TEST DRIVE -->
@@ -375,37 +384,31 @@
     <h2>TEST DRIVE</h2>
     <div id="testDriveForm">
       <div class="form-group">
-        <label>Nama</label>
-        <input type="text" id="td_nama" placeholder="">
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="td_email" placeholder="">
+        <label>Nama Lengkap</label>
+        <input type="text" id="td_nama" placeholder="Nama Anda">
       </div>
       <div class="form-group">
         <label>No HP / WhatsApp</label>
-        <input type="tel" id="td_hp" placeholder="">
+        <input type="tel" id="td_hp" placeholder="+62...">
       </div>
       <div class="form-group">
         <label>Tipe Mobil</label>
-        <div class="select-wrap">
-          <select id="td_mobil">
-            <option>FRONX</option>
-            <option>GRAND VITARA</option>
-            <option>NEW XL7</option>
-            <option>JIMNY</option>
-            <option>S-PRESSO</option>
-            <option>APV</option>
-            <option>ALL NEW ERTIGA</option>
-            <option>NEW CARRY PICK UP</option>
-          </select>
-        </div>
+        <select id="td_mobil">
+          <option>Grand Vitara</option>
+          <option>S-Presso</option>
+          <option>APV</option>
+          <option>New XL7</option>
+          <option>Jimny</option>
+          <option>Fronx</option>
+          <option>All New Ertiga</option>
+          <option>New Carry Pick Up</option>
+        </select>
       </div>
       <div class="form-group">
-        <label>Hari</label>
+        <label>Tanggal Test Drive</label>
         <input type="date" id="td_hari">
       </div>
-      <button class="submit-btn" onclick="submitTestDrive()" id="tdBtn">SUBMIT</button>
+      <button class="submit-btn" onclick="submitTestDrive()" id="tdBtn">KIRIM PERMINTAAN</button>
     </div>
     <div class="form-success" id="testDriveSuccess">
       <div class="check">✅</div>
@@ -422,51 +425,41 @@
     <h2>SIMULASI KREDIT</h2>
     <div id="kreditForm">
       <div class="form-group">
-        <label>Tipe Mobil</label>
-        <div class="select-wrap">
-          <select id="kr_mobil">
-            <option>FRONX</option>
-            <option>GRAND VITARA</option>
-            <option>NEW XL7</option>
-            <option>JIMNY</option>
-            <option>S-PRESSO</option>
-            <option>APV</option>
-            <option>ALL NEW ERTIGA</option>
-            <option>NEW CARRY PICK UP</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Pilih Tenor</label>
-        <div class="select-wrap">
-          <select id="kr_tenor">
-            <option>1 Tahun</option>
-            <option>2 Tahun</option>
-            <option>3 Tahun</option>
-            <option>4 Tahun</option>
-            <option>5 Tahun</option>
-            <option>6 Tahun</option>
-            <option>7 Tahun</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Uang Muka</label>
-        <input type="number" id="kr_dp" placeholder="Contoh: 50000000">
-      </div>
-      <div class="form-group">
         <label>Nama Lengkap</label>
-        <input type="text" id="kr_nama" placeholder="">
-      </div>
-      <div class="form-group">
-        <label>Asal Kota</label>
-        <input type="text" id="kr_kota" placeholder="">
+        <input type="text" id="kr_nama" placeholder="Nama Anda">
       </div>
       <div class="form-group">
         <label>No HP / WhatsApp</label>
-        <input type="tel" id="kr_hp" placeholder="">
+        <input type="tel" id="kr_hp" placeholder="+62...">
       </div>
-      <button class="submit-btn" onclick="submitKredit()" id="krBtn">HITUNG HARGA KREDIT</button>
+      <div class="form-group">
+        <label>Tipe Mobil</label>
+        <select id="kr_mobil">
+          <option>Grand Vitara</option>
+          <option>S-Presso</option>
+          <option>APV</option>
+          <option>New XL7</option>
+          <option>Jimny</option>
+          <option>Fronx</option>
+          <option>All New Ertiga</option>
+          <option>New Carry Pick Up</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tenor</label>
+        <select id="kr_tenor">
+          <option>12 Bulan</option>
+          <option>24 Bulan</option>
+          <option>36 Bulan</option>
+          <option>48 Bulan</option>
+          <option>60 Bulan</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Uang Muka (Rp)</label>
+        <input type="number" id="kr_dp" placeholder="Contoh: 50000000">
+      </div>
+      <button class="submit-btn" onclick="submitKredit()" id="krBtn">KIRIM PERMINTAAN</button>
     </div>
     <div class="form-success" id="kreditSuccess">
       <div class="check">✅</div>
@@ -477,100 +470,106 @@
 </div>
 
 <script>
-// ===== SUPABASE CONFIG =====
-// Ganti dengan URL dan Key Supabase Anda
-const SUPABASE_URL = 'https://jglkpcywzmmaetbxwllr.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SB_URL='https://jglkpcywzmmaetbxwllr.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ';
 
-// ===== SLIDER =====
-let current = 0, total = 4, autoTimer;
-const slidesEl = document.getElementById('slides');
-const dotsEl = document.getElementById('dots');
+// HAMBURGER
+function toggleMenu(){
+  document.getElementById('navMobile').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  const mob=document.getElementById('navMobile');
+  const ham=document.getElementById('hamBtn');
+  if(!mob.contains(e.target)&&!ham.contains(e.target)){
+    mob.classList.remove('open');
+  }
+});
 
-// Build dots
-for (let i = 0; i < total; i++) {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i === 0 ? ' active' : '');
-  d.onclick = () => goSlide(i);
+// SLIDER
+let current=0,total=4,autoTimer;
+const slidesEl=document.getElementById('slides');
+const dotsEl=document.getElementById('dots');
+for(let i=0;i<total;i++){
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.onclick=()=>goSlide(i);
   dotsEl.appendChild(d);
 }
-
-function updateSlider() {
-  slidesEl.style.transform = `translateX(-${current * 100}%)`;
-  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+function updateSlider(){
+  slidesEl.style.transform=`translateX(-${current*100}%)`;
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===current));
 }
-function changeSlide(dir) { current = (current + dir + total) % total; updateSlider(); resetAuto(); }
-function goSlide(n) { current = n; updateSlider(); resetAuto(); }
-function resetAuto() { clearInterval(autoTimer); autoTimer = setInterval(() => changeSlide(1), 5000); }
+function changeSlide(dir){current=(current+dir+total)%total;updateSlider();resetAuto();}
+function goSlide(n){current=n;updateSlider();resetAuto();}
+function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(()=>changeSlide(1),5000);}
 resetAuto();
+const heroEl=document.getElementById('hero');
+let startX=0;
+heroEl.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
+heroEl.addEventListener('touchend',e=>{if(Math.abs(startX-e.changedTouches[0].clientX)>50)changeSlide(startX>e.changedTouches[0].clientX?1:-1);});
 
-let startX = 0;
-const hero = document.getElementById('hero');
-hero.addEventListener('mousedown', e => startX = e.clientX);
-hero.addEventListener('mouseup', e => { if (Math.abs(startX - e.clientX) > 50) changeSlide(startX > e.clientX ? 1 : -1); });
-hero.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-hero.addEventListener('touchend', e => { if (Math.abs(startX - e.changedTouches[0].clientX) > 50) changeSlide(startX > e.changedTouches[0].clientX ? 1 : -1); });
-
-// ===== SCROLL =====
-function scrollToFooter() { document.getElementById('footer').scrollIntoView({ behavior: 'smooth' }); }
-window.addEventListener('scroll', () => {
-  document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+// SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('backTop').classList.toggle('visible',window.scrollY>400);
 });
 
-// ===== MODAL =====
-function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-  document.body.style.overflow = '';
+// MODAL
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow='hidden';
 }
-document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); });
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id);});
 });
 
-// ===== FORMAT RUPIAH =====
-function fmtRp(n) { return 'Rp ' + Number(n).toLocaleString('id-ID'); }
-
-// ===== SUBMIT TEST DRIVE =====
-async function submitTestDrive() {
-  const nama = document.getElementById('td_nama').value.trim();
-  const email = document.getElementById('td_email').value.trim();
-  const hp = document.getElementById('td_hp').value.trim();
-  const mobil = document.getElementById('td_mobil').value;
-  const hari = document.getElementById('td_hari').value;
-  if (!nama || !hp || !hari) { alert('Harap isi semua field yang diperlukan.'); return; }
-  const btn = document.getElementById('tdBtn');
-  btn.disabled = true; btn.textContent = 'Mengirim...';
-  try {
-    const { error } = await supabase.from('test_drive').insert([{ nama, email, no_hp: hp, tipe_mobil: mobil, tanggal: hari, created_at: new Date().toISOString() }]);
-    if (error) throw error;
-    document.getElementById('testDriveForm').style.display = 'none';
-    document.getElementById('testDriveSuccess').style.display = 'block';
-  } catch (err) {
-    alert('Gagal mengirim. Silakan coba lagi.\n' + err.message);
-    btn.disabled = false; btn.textContent = 'SUBMIT';
+// SUBMIT TEST DRIVE
+async function submitTestDrive(){
+  const nama=document.getElementById('td_nama').value.trim();
+  const hp=document.getElementById('td_hp').value.trim();
+  const mobil=document.getElementById('td_mobil').value;
+  const hari=document.getElementById('td_hari').value;
+  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
+  const btn=document.getElementById('tdBtn');
+  btn.disabled=true;btn.textContent='Mengirim...';
+  try{
+    await fetch(SB_URL+'/rest/v1/test_drive',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+      body:JSON.stringify({nama,no_hp:hp,mobil,tanggal:hari})
+    });
+    document.getElementById('testDriveForm').style.display='none';
+    document.getElementById('testDriveSuccess').style.display='block';
+  }catch(err){
+    alert('Gagal mengirim. Silakan coba lagi.');
+    btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';
   }
 }
 
-// ===== SUBMIT KREDIT =====
-async function submitKredit() {
-  const nama = document.getElementById('kr_nama').value.trim();
-  const hp = document.getElementById('kr_hp').value.trim();
-  const mobil = document.getElementById('kr_mobil').value;
-  const tenor = document.getElementById('kr_tenor').value;
-  const dp = document.getElementById('kr_dp').value;
-  const kota = document.getElementById('kr_kota').value.trim();
-  if (!nama || !hp) { alert('Harap isi Nama dan No HP.'); return; }
-  const btn = document.getElementById('krBtn');
-  btn.disabled = true; btn.textContent = 'Mengirim...';
-  try {
-    const { error } = await supabase.from('simulasi_kredit').insert([{ nama, no_hp: hp, tipe_mobil: mobil, tenor, uang_muka: dp ? parseInt(dp) : null, asal_kota: kota, created_at: new Date().toISOString() }]);
-    if (error) throw error;
-    document.getElementById('kreditForm').style.display = 'none';
-    document.getElementById('kreditSuccess').style.display = 'block';
-  } catch (err) {
-    alert('Gagal mengirim. Silakan coba lagi.\n' + err.message);
-    btn.disabled = false; btn.textContent = 'HITUNG HARGA KREDIT';
+// SUBMIT KREDIT
+async function submitKredit(){
+  const nama=document.getElementById('kr_nama').value.trim();
+  const hp=document.getElementById('kr_hp').value.trim();
+  const mobil=document.getElementById('kr_mobil').value;
+  const tenor=document.getElementById('kr_tenor').value;
+  const dp=document.getElementById('kr_dp').value;
+  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
+  const btn=document.getElementById('krBtn');
+  btn.disabled=true;btn.textContent='Mengirim...';
+  try{
+    await fetch(SB_URL+'/rest/v1/simulasi_kredit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+      body:JSON.stringify({nama,no_hp:hp,mobil,tenor,uang_muka:dp?parseInt(dp):null})
+    });
+    document.getElementById('kreditForm').style.display='none';
+    document.getElementById('kreditSuccess').style.display='block';
+  }catch(err){
+    alert('Gagal mengirim. Silakan coba lagi.');
+    btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';
   }
 }
 </script>
