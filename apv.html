@@ -103,6 +103,12 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   footer{padding:40px 20px 90px;}
   .color-main{width:260px;height:180px;}
 }
+
+.ctabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;justify-content:center;}
+.ctab{padding:7px 18px;border:2px solid #1a3a8f;border-radius:20px;background:#fff;color:#1a3a8f;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:.2s;}
+.ctab.active,.ctab:hover{background:#1a3a8f;color:#fff;}
+.ctab-panel{display:none;}.ctab-panel.active{display:block;}
+
 </style>
 </head>
 <body><nav>
@@ -128,20 +134,17 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
     <div class="hero-price">MULAI 228.200.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>Apapun bisa anda lakukan, mulai dari menyenangkan istri berbelanja, emanjakan anak-anak ke tempat rekreasi, berlibur bersama keluarga besar, hingga mengembangkan bisnis dan usaha. Berkendara terasa lebih aman dan nyaman.</p></div><div class="sec-banner">
-  <img id="extImg" class="sec-banner-img" src="https://www.suzuki.co.id/uploads/model/exterior/apv.jpg" alt="Eksterior" style="width:100%;height:100%;object-fit:cover;">
+  <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
   <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Semakin Berkelas dengan Tampilan Mewah</div><div class="col-d">Desain baru pada eksterior memiliki kesan yang elegan dan tangguh menjadikan New APV Arena sebagai mobil multifungsi untuk menemani setiap langkah anda.</div></div><div class="sec-banner">
-  <img id="intImg" class="sec-banner-img" src="https://www.suzuki.co.id/uploads/model/interior/apv.jpg" alt="Interior" style="width:100%;height:100%;object-fit:cover;">
+  <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
   <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
-</div><div class="sec-ct"><h2>Semakin Luas Dan Nyaman</h2><p>Desain baru pada Interior berkesan elegan dengan beragam fungsi, kenyamanan serta kemewahan yang berpadu sangat indah menjadikan APV Arena tak lekang oleh waktu.</p></div><div class="color-sec">
-  <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zzl.png" alt="color">
-  <div id="cName" class="color-lbl">COOL BLACK METALLIC</div>
-  <div class="color-thumbs"><img src="https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zzl.png" alt="COOL BLACK METALLIC" class="active" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zzl.png','COOL BLACK METALLIC')">
-<img src="https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zzr.png" alt="SILKY SILVER METALLIC" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zzr.png','SILKY SILVER METALLIC')">
-<img src="https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zuf.png" alt="PEARL WHITE" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zuf.png','PEARL WHITE')">
-<img src="https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zrd.png" alt="BORDEAUX RED METALLIC" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zrd.png','BORDEAUX RED METALLIC')">
-<img src="https://www.suzuki.co.id/themes/suzuki/images/apv/apv-z2s.png" alt="PEARL SNOW WHITE" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/apv/apv-z2s.png','PEARL SNOW WHITE')">
-</div>
+</div><div class="sec-ct"><h2>Semakin Luas Dan Nyaman</h2><p>Desain baru pada Interior berkesan elegan dengan beragam fungsi, kenyamanan serta kemewahan yang berpadu sangat indah menjadikan APV Arena tak lekang oleh waktu.</p></div><div class="color-sec" id="colorSec">
+  <div class="color-sec-title">PILIHAN WARNA</div>
+  <div class="color-main-wrap"><img class="color-main" id="colorMainImg" src="" alt="color" style="display:none;"></div>
+  <div class="color-lbl" id="colorLbl"></div>
+  <div class="ctabs"><button class="ctab active" onclick="switchColorTab('SGX',this)">SGX</button><button class="ctab" onclick="switchColorTab('GX',this)">GX</button><button class="ctab" onclick="switchColorTab('GL',this)">GL</button></div>
+  <div class="ctab-panel active" id="cpanel-SGX"><div class="color-thumbs" id="colorThumbs-SGX"></div></div><div class="ctab-panel" id="cpanel-GX"><div class="color-thumbs" id="colorThumbs-GX"></div></div><div class="ctab-panel" id="cpanel-GL"><div class="color-thumbs" id="colorThumbs-GL"></div></div>
 </div><div class="harga-sec">
   <h2>HARGA</h2>
   <table class="htable">
@@ -203,84 +206,221 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
     </form>
   </div>
 </div><script>
-const SB_URL='https://jglkpcywzmmaetbxwllr.supabase.co';
-const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ';
+const SB_URL='https://jglkpcywzmmaetbxwllr.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ';
+const STORAGE='https://jglkpcywzmmaetbxwllr.supabase.co/storage/v1/object/public/product-images';
 const CAR_SLUG='apv';
-function changeColor(el,src,name){
-  document.getElementById('cMain').src=src;
-  document.getElementById('cName').textContent=name;
-  document.querySelectorAll('.color-thumbs img').forEach(i=>i.classList.remove('active'));
-  el.classList.add('active');
+
+// Load images from Supabase
+async function loadImages(){
+  try{
+    const r=await fetch(SB_URL+'/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    });
+    const [d]=await r.json();
+    if(!d) return;
+    if(d.img_hero){
+      const heroImg=document.getElementById('heroImg');
+      const heroPlaceholder=document.getElementById('heroPlaceholder');
+      if(heroImg){ heroImg.src=d.img_hero; }
+      if(heroPlaceholder) heroPlaceholder.style.display='none';
+    }
+    if(d.img_exterior){
+      const extImg=document.getElementById('extImg');
+      const extPh=document.getElementById('extPlaceholder');
+      if(extImg){ extImg.src=d.img_exterior; extImg.style.display='block'; }
+      if(extPh) extPh.style.display='none';
+    }
+    if(d.img_interior){
+      const intImg=document.getElementById('intImg');
+      const intPh=document.getElementById('intPlaceholder');
+      if(intImg){ intImg.src=d.img_interior; intImg.style.display='block'; }
+      if(intPh) intPh.style.display='none';
+    }
+  }catch(e){console.log('Image load error',e);}
 }
+
+function openModal(t){document.getElementById('modal-'+t).style.display='flex';}
+function closeModal(t){document.getElementById('modal-'+t).style.display='none';}
+  try{await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},body:JSON.stringify(data)});}catch(err){}
+  alert('Terima kasih! Tim kami akan menghubungi Anda segera.');
+  closeModal(t); e.target.reset();
+}
+document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none'}));
 
 function toggleMenu(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){
-  const mob=document.getElementById('navMobile'),ham=document.getElementById('hamBtn');
-  if(mob&&ham&&!mob.contains(e.target)&&!ham.contains(e.target))mob.classList.remove('open');
+  const mob=document.getElementById('navMobile');
+  const ham=document.getElementById('hamBtn');
+  if(mob&&ham&&!mob.contains(e.target)&&!ham.contains(e.target)){mob.classList.remove('open');}
 });
-document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none'}));
 
-async function submitSimulasi(e){
+
+async function submitSimulasi(e, carName){
   e.preventDefault();
-  const nama=document.getElementById('sim-nama').value.trim();
-  const hp=document.getElementById('sim-hp').value.trim();
+  const nama = document.getElementById('sim-nama').value.trim();
+  const hp = document.getElementById('sim-hp').value.trim();
   if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
-  const btn=e.target.querySelector('button[type=submit]');
-  btn.disabled=true;btn.textContent='Mengirim...';
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled=true; btn.textContent='Mengirim...';
   try{
     await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/simulasi_kredit',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
       body:JSON.stringify({
-        nama,no_hp:hp,
-        mobil:document.getElementById('sim-mobil').value,
-        tenor:document.getElementById('sim-tenor').value,
-        uang_muka:document.getElementById('sim-dp').value?parseInt(document.getElementById('sim-dp').value):null,
-        domisili:document.getElementById('sim-domisili').value.trim()
+        nama, no_hp:hp,
+        mobil: document.getElementById('sim-mobil').value,
+        tenor: document.getElementById('sim-tenor').value,
+        uang_muka: document.getElementById('sim-dp').value ? parseInt(document.getElementById('sim-dp').value) : null,
+        domisili: document.getElementById('sim-domisili').value.trim()
       })
     });
     e.target.style.display='none';
     document.getElementById('simSuccess').style.display='block';
-  }catch(err){alert('Gagal. Coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
+  }catch(err){
+    alert('Gagal mengirim. Silakan coba lagi.');
+    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
+  }
 }
-
 async function submitTestDriveForm(e){
   e.preventDefault();
-  const nama=document.getElementById('td-nama').value.trim();
-  const hp=document.getElementById('td-hp').value.trim();
+  const nama = document.getElementById('td-nama').value.trim();
+  const hp = document.getElementById('td-hp').value.trim();
   if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
-  const btn=e.target.querySelector('button[type=submit]');
-  btn.disabled=true;btn.textContent='Mengirim...';
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled=true; btn.textContent='Mengirim...';
   try{
     await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/test_drive',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
       body:JSON.stringify({
-        nama,no_hp:hp,
-        mobil:document.getElementById('td-mobil').value,
-        tanggal:document.getElementById('td-tgl').value
+        nama, no_hp:hp,
+        mobil: document.getElementById('td-mobil').value,
+        tanggal: document.getElementById('td-tgl').value
       })
     });
     e.target.style.display='none';
     document.getElementById('tdSuccess').style.display='block';
-  }catch(err){alert('Gagal. Coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
+  }catch(err){
+    alert('Gagal mengirim. Silakan coba lagi.');
+    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
+  }
 }
 
-async function loadImages(){
+function openModal(t){document.getElementById("modal-"+t).style.display="flex";}
+function closeModal(t){document.getElementById("modal-"+t).style.display="none";}
+
+document.querySelectorAll('#modal-td,#modal-sim').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none';}));
+
+async function submitSimulasi(e, carName){
+  e.preventDefault();
+  const nama = document.getElementById('sim-nama').value.trim();
+  const hp = document.getElementById('sim-hp').value.trim();
+  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled=true; btn.textContent='Mengirim...';
   try{
-    const r=await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
-      headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'}
+    await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/simulasi_kredit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
+      body:JSON.stringify({
+        nama, no_hp:hp,
+        mobil: document.getElementById('sim-mobil').value,
+        tenor: document.getElementById('sim-tenor').value,
+        uang_muka: document.getElementById('sim-dp').value ? parseInt(document.getElementById('sim-dp').value) : null,
+        domisili: document.getElementById('sim-domisili').value.trim()
+      })
     });
-    const rows=await r.json();
-    if(!rows||!rows.length)return;
-    const d=rows[0];
-    const heroImg=document.getElementById('heroImg');
-    if(d.img_hero&&heroImg)heroImg.src=d.img_hero;
-    const extImg=document.getElementById('extImg');
-    if(d.img_exterior&&extImg)extImg.src=d.img_exterior;
-    const intImg=document.getElementById('intImg');
-    if(d.img_interior&&intImg)intImg.src=d.img_interior;
-  }catch(e){console.log('img error',e);}
+    e.target.style.display='none';
+    document.getElementById('simSuccess').style.display='block';
+  }catch(err){
+    alert('Gagal mengirim. Silakan coba lagi.');
+    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
+  }
 }
+async function submitTestDriveForm(e){
+  e.preventDefault();
+  const nama = document.getElementById('td-nama').value.trim();
+  const hp = document.getElementById('td-hp').value.trim();
+  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled=true; btn.textContent='Mengirim...';
+  try{
+    await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/test_drive',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
+      body:JSON.stringify({
+        nama, no_hp:hp,
+        mobil: document.getElementById('td-mobil').value,
+        tanggal: document.getElementById('td-tgl').value
+      })
+    });
+    e.target.style.display='none';
+    document.getElementById('tdSuccess').style.display='block';
+  }catch(err){
+    alert('Gagal mengirim. Silakan coba lagi.');
+    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
+  }
+}
+
+function openModal(t){document.getElementById("modal-"+t).style.display="flex";}
+function closeModal(t){document.getElementById("modal-"+t).style.display="none";}
+
+document.querySelectorAll('#modal-td,#modal-sim').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none';}));
 loadImages();
+
+function switchColorTab(group, btn) {
+  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.ctab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const panel = document.getElementById('cpanel-' + group);
+  if (panel) panel.classList.add('active');
+  // update main image to first color of this group
+  const firstThumb = panel && panel.querySelector('.color-thumb');
+  if (firstThumb) firstThumb.click();
+}
+
+async function loadColors() {
+  try {
+    const r = await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/color_variants?car_slug=eq.'+CAR_SLUG+'&order=sort_order,id&select=*', {
+      headers: {'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'}
+    });
+    const items = await r.json();
+    if (!items || !items.length) return;
+    const mainImg = document.getElementById('colorMainImg');
+    const lblEl = document.getElementById('colorLbl');
+    // Group by variant_group
+    const grouped = {};
+    items.forEach(item => {
+      const g = item.variant_group || '';
+      if (!grouped[g]) grouped[g] = [];
+      grouped[g].push(item);
+    });
+    let firstSet = true;
+    Object.entries(grouped).forEach(([group, colors]) => {
+      const thumbsEl = document.getElementById('colorThumbs-' + group);
+      if (!thumbsEl) return;
+      thumbsEl.innerHTML = '';
+      colors.forEach((item, i) => {
+        const div = document.createElement('div');
+        div.className = 'color-thumb' + (firstSet && i === 0 ? ' active' : '');
+        div.innerHTML = '<img src="'+item.image_url+'" alt="'+item.color_name+'"><p>'+item.color_name+'</p>';
+        div.onclick = function() {
+          mainImg.src = item.image_url;
+          mainImg.style.display = '';
+          lblEl.textContent = item.color_name;
+          // Clear active from all thumbs in all panels
+          document.querySelectorAll('.color-thumb').forEach(t => t.classList.remove('active'));
+          div.classList.add('active');
+        };
+        thumbsEl.appendChild(div);
+        if (firstSet && i === 0) {
+          mainImg.src = item.image_url;
+          mainImg.style.display = '';
+          lblEl.textContent = item.color_name;
+          firstSet = false;
+        }
+      });
+    });
+  } catch(e) { console.error('loadColors error:', e); }
+}
 </script></body></html>

@@ -8,7 +8,6 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
-/* LOGIN */
 #loginScreen{position:fixed;inset:0;background:#1a3a8f;display:flex;align-items:center;justify-content:center;z-index:9999;}
 .login-box{background:#fff;border-radius:12px;padding:48px 40px;width:90%;max-width:420px;text-align:center;}
 .login-logo{height:40px;margin-bottom:28px;}
@@ -17,7 +16,6 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
 .login-box input:focus{border-color:#1a3a8f;}
 .login-box button{width:100%;padding:14px;background:#1a3a8f;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px;}
 .login-err{color:#e53935;font-size:13px;margin-top:10px;display:none;}
-/* LAYOUT */
 #adminApp{display:none;}
 .sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:#1a3a8f;color:#fff;padding:24px 0;overflow-y:auto;}
 .sidebar-logo{padding:0 24px 24px;border-bottom:1px solid rgba(255,255,255,0.15);}
@@ -31,15 +29,11 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
 .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;}
 .topbar h1{font-size:22px;font-weight:800;color:#111;}
 .btn-logout{padding:8px 20px;background:#e53935;color:#fff;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
-/* PAGES */
-.page{display:none;}
-.page.active{display:block;}
-/* CARDS */
+.page{display:none;}.page.active{display:block;}
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px;}
 .stat-card{background:#fff;border-radius:10px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
 .stat-label{font-size:12px;font-weight:700;letter-spacing:1px;color:#888;text-transform:uppercase;margin-bottom:8px;}
 .stat-val{font-size:32px;font-weight:800;color:#1a3a8f;}
-/* TABLES */
 .card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;margin-bottom:24px;}
 .card-header{padding:20px 24px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-between;}
 .card-title{font-size:15px;font-weight:800;color:#111;}
@@ -47,10 +41,6 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
 .table th{text-align:left;padding:12px 24px;background:#fafafa;font-size:11px;font-weight:700;letter-spacing:1px;color:#888;border-bottom:1px solid #f0f0f0;}
 .table td{padding:14px 24px;border-bottom:1px solid #f8f8f8;font-size:13px;color:#333;}
 .table tr:last-child td{border-bottom:none;}
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
-.badge-new{background:#e8f5e9;color:#2e7d32;}
-.badge-pending{background:#fff3e0;color:#e65100;}
-/* IMAGE MANAGER */
 .car-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;}
 .car-card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;}
 .car-card-header{background:#1a3a8f;color:#fff;padding:14px 20px;}
@@ -72,14 +62,33 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
 .upload-status.ok{color:#2e7d32;}
 .upload-status.err{color:#e53935;}
 .upload-status.loading{color:#888;}
-/* TOAST */
+/* COLOR VARIANTS */
+.color-car-section{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;overflow:hidden;}
+.color-car-header{background:#1a3a8f;color:#fff;padding:14px 20px;}
+.color-car-header h3{font-size:14px;font-weight:800;}
+.color-car-body{padding:20px;}
+.color-add-form{background:#f8f9fc;border-radius:8px;padding:16px;margin-bottom:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-row label,.color-add-form>label{font-size:11px;font-weight:700;letter-spacing:1px;color:#888;text-transform:uppercase;display:block;margin-bottom:5px;margin-top:10px;}
+.form-row label:first-child,.color-add-form>label:first-child{margin-top:0;}
+.color-add-form input,.color-add-form select{width:100%;padding:9px 12px;border:1px solid #ddd;border-radius:5px;font-family:'Montserrat',sans-serif;font-size:13px;outline:none;}
+.color-add-form input:focus,.color-add-form select:focus{border-color:#1a3a8f;}
+.btn-add-color{margin-top:12px;padding:10px 20px;background:#1a3a8f;color:#fff;border:none;border-radius:5px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;cursor:pointer;width:100%;}
+.btn-add-color:hover{background:#0f2460;}
+.color-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:4px;}
+.color-item{border:1px solid #eee;border-radius:8px;overflow:hidden;position:relative;text-align:center;}
+.color-item img{width:100%;height:72px;object-fit:contain;background:#f5f5f5;display:block;}
+.color-item-info{padding:6px 6px;}
+.color-item-group{font-size:9px;font-weight:700;color:#1a3a8f;letter-spacing:1px;text-transform:uppercase;}
+.color-item-name{font-size:9px;color:#555;font-weight:600;line-height:1.3;margin-top:2px;}
+.color-item-del{position:absolute;top:3px;right:3px;background:rgba(229,57,53,0.9);color:#fff;border:none;border-radius:3px;font-size:10px;font-weight:700;padding:2px 5px;cursor:pointer;line-height:1.4;}
+.color-empty{font-size:13px;color:#aaa;padding:16px 0;text-align:center;grid-column:1/-1;}
 .toast{position:fixed;bottom:24px;right:24px;background:#323232;color:#fff;padding:12px 24px;border-radius:6px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;}
 .toast.show{opacity:1;}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-box">
     <img class="login-logo" src="https://suzukigedebage.com/wp-content/uploads/2025/06/logo-suzuki-300x57.webp" alt="Suzuki">
@@ -91,9 +100,7 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
   </div>
 </div>
 
-<!-- APP -->
 <div id="adminApp">
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="sidebar-logo"><img src="https://suzukigedebage.com/wp-content/uploads/2025/06/logo-suzuki-300x57.webp" alt="Suzuki"></div>
     <div class="sidebar-menu">
@@ -106,6 +113,10 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
         Gambar Produk
       </div>
+      <div class="menu-item" onclick="showPage('warna',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22C6.49 22 2 17.52 2 12C2 6.48 6.49 2 12 2C17.51 2 22 6.48 22 12C22 17.52 17.51 22 12 22Z" stroke-width="2"/><path d="M12 2C12 2 8 8 8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 8 12 2 12 2Z"/></svg>
+        Warna Mobil
+      </div>
       <div class="menu-item" onclick="showPage('testdrive',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         Test Drive
@@ -117,7 +128,6 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
     </div>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
       <h1 id="pageTitle">Dashboard</h1>
@@ -142,16 +152,24 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
         <div class="card-header"><span class="card-title">Simulasi Kredit Terbaru</span></div>
         <table class="table">
           <thead><tr><th>NAMA</th><th>NO. HP</th><th>MOBIL</th><th>TENOR</th><th>UANG MUKA</th><th>DOMISILI</th></tr></thead>
-          <tbody id="tbodySim"><tr><td colspan="5" style="text-align:center;color:#aaa;padding:30px;">Memuat data...</td></tr></tbody>
+          <tbody id="tbodySim"><tr><td colspan="6" style="text-align:center;color:#aaa;padding:30px;">Memuat data...</td></tr></tbody>
         </table>
       </div>
     </div>
 
     <!-- GAMBAR PRODUK -->
     <div id="page-gambar" class="page">
-      <p style="font-size:14px;color:#666;margin-bottom:24px;">Upload gambar untuk setiap mobil. Gambar akan langsung tampil di halaman produk.</p>
+      <p style="font-size:14px;color:#666;margin-bottom:24px;">Upload gambar banner untuk setiap mobil. Gambar akan langsung tampil di halaman produk.</p>
       <div class="car-grid" id="carGrid">
         <div style="grid-column:1/-1;text-align:center;padding:40px;color:#aaa;">Memuat data...</div>
+      </div>
+    </div>
+
+    <!-- WARNA MOBIL -->
+    <div id="page-warna" class="page">
+      <p style="font-size:14px;color:#666;margin-bottom:24px;">Kelola pilihan warna setiap mobil. Upload foto per warna — otomatis tampil di halaman mobil.</p>
+      <div id="colorCarList">
+        <div style="text-align:center;padding:40px;color:#aaa;">Memuat data...</div>
       </div>
     </div>
 
@@ -172,7 +190,7 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
         <div class="card-header"><span class="card-title">Semua Permintaan Simulasi Kredit</span></div>
         <table class="table">
           <thead><tr><th>NAMA</th><th>NO. HP</th><th>MOBIL</th><th>TENOR</th><th>UANG MUKA</th><th>DOMISILI</th></tr></thead>
-          <tbody id="tbodySimFull"><tr><td colspan="5" style="text-align:center;color:#aaa;padding:30px;">Memuat data...</td></tr></tbody>
+          <tbody id="tbodySimFull"><tr><td colspan="6" style="text-align:center;color:#aaa;padding:30px;">Memuat data...</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -198,26 +216,38 @@ const CARS=[
   {slug:'new-carry-pick-up',name:'New Carry Pick Up'},
 ];
 
+// Grup tipe per mobil. Kosong string = tidak ada grup
+const CAR_GROUPS={
+  'grand-vitara':[''],
+  's-presso':[''],
+  'apv':['SGX','GX','GL'],
+  'new-xl7':['Alpha Kuro','Alpha','Beta','Zeta'],
+  'jimny':['3-Door','5-Door'],
+  'fronx':['SGX','GX','GL'],
+  'all-new-ertiga':['GX Hybrid','GL','GA'],
+  'new-carry-pick-up':[''],
+};
+
 const IMG_TYPES=['listing','hero','exterior','interior'];
-const IMG_LABELS={'listing':'Foto Listing (Kartu Produk)','hero':'Hero / Banner Utama','exterior':'Banner Eksterior','interior':'Banner Interior'};
-
+const IMG_LABELS={listing:'Foto Listing (Kartu Produk)',hero:'Hero / Banner Utama',exterior:'Banner Eksterior',interior:'Banner Interior'};
 let currentImages={};
+let colorData={};
 
-function h(s){return s||''}
+function h(s){return s?String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;'):''}
 function fmtDate(d){return d?new Date(d).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}):''}
 function fmtRp(v){return v?'Rp '+Number(v).toLocaleString('id-ID'):'-'}
 
 function toast(msg,ok=true){
   const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.style.background=ok?'#1a3a8f':'#e53935';
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2800);
+  t.textContent=msg;t.style.background=ok?'#1a3a8f':'#e53935';
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);
 }
 
 async function api(path,opts={}){
-  const r=await fetch(SB+path,{headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json',...(opts.headers||{})},...opts});
-  return r;
+  return fetch(SB+path,{
+    headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json',...(opts.headers||{})},
+    ...opts
+  });
 }
 
 function doLogin(){
@@ -226,15 +256,12 @@ function doLogin(){
   if(e===ADMIN_EMAIL&&p===ADMIN_PASS){
     document.getElementById('loginScreen').style.display='none';
     document.getElementById('adminApp').style.display='block';
-    loadDashboard();
-    loadImageData();
+    loadDashboard();loadImageData();
   }else{
     document.getElementById('loginErr').style.display='block';
   }
 }
-
 document.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-
 function doLogout(){
   document.getElementById('loginScreen').style.display='flex';
   document.getElementById('adminApp').style.display='none';
@@ -245,11 +272,12 @@ function showPage(name,el){
   document.querySelectorAll('.menu-item').forEach(m=>m.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   el.classList.add('active');
-  const titles={dashboard:'Dashboard',gambar:'Gambar Produk',testdrive:'Test Drive',simulasi:'Simulasi Kredit'};
+  const titles={dashboard:'Dashboard',gambar:'Gambar Produk',warna:'Warna Mobil',testdrive:'Test Drive',simulasi:'Simulasi Kredit'};
   document.getElementById('pageTitle').textContent=titles[name]||name;
   if(name==='testdrive')loadTDFull();
   if(name==='simulasi')loadSimFull();
   if(name==='gambar')renderCarGrid();
+  if(name==='warna')loadColorPage();
 }
 
 async function loadDashboard(){
@@ -258,25 +286,32 @@ async function loadDashboard(){
       api('/rest/v1/test_drive?select=*&order=id.desc&limit=5'),
       api('/rest/v1/simulasi_kredit?select=*&order=id.desc&limit=5')
     ]);
-    const td=await r1.json();
-    const sim=await r2.json();
-    document.getElementById('statTD').textContent=td.length>=5?td.length+'+':td.length;
-    document.getElementById('statSim').textContent=sim.length>=5?sim.length+'+':sim.length;
-    document.getElementById('tbodyTD').innerHTML=td.length?td.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${fmtDate(r.tanggal)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
-    document.getElementById('tbodySim').innerHTML=sim.length?sim.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td><td>${h(r.domisili)}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
+    const td=await r1.json(),sim=await r2.json();
+    document.getElementById('statTD').textContent=td.length>=5?'5+':td.length;
+    document.getElementById('statSim').textContent=sim.length>=5?'5+':sim.length;
+    document.getElementById('tbodyTD').innerHTML=td.length
+      ?td.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${fmtDate(r.tanggal)}</td></tr>`).join('')
+      :'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
+    document.getElementById('tbodySim').innerHTML=sim.length
+      ?sim.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td><td>${h(r.domisili)}</td></tr>`).join('')
+      :'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
   }catch(e){console.error(e);}
 }
 
 async function loadTDFull(){
   const r=await api('/rest/v1/test_drive?select=*&order=id.desc');
   const d=await r.json();
-  document.getElementById('tbodyTDFull').innerHTML=d.length?d.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${fmtDate(r.tanggal)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
+  document.getElementById('tbodyTDFull').innerHTML=d.length
+    ?d.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${fmtDate(r.tanggal)}</td></tr>`).join('')
+    :'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
 }
 
 async function loadSimFull(){
   const r=await api('/rest/v1/simulasi_kredit?select=*&order=id.desc');
   const d=await r.json();
-  document.getElementById('tbodySimFull').innerHTML=d.length?d.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td><td>${h(r.domisili)}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
+  document.getElementById('tbodySimFull').innerHTML=d.length
+    ?d.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td><td>${h(r.domisili)}</td></tr>`).join('')
+    :'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
 }
 
 async function loadImageData(){
@@ -306,16 +341,12 @@ function renderCarGrid(){
   <div class="upload-status" id="status-${car.slug}-${type}"></div>
 </div>`;
     }).join('');
-    return `<div class="car-card">
-  <div class="car-card-header"><h3>${car.name}</h3></div>
-  <div class="car-card-body">${rows}</div>
-</div>`;
+    return `<div class="car-card"><div class="car-card-header"><h3>${car.name}</h3></div><div class="car-card-body">${rows}</div></div>`;
   }).join('');
 }
 
 function onFileChange(slug,type,input){
-  const f=input.files[0];
-  if(!f)return;
+  const f=input.files[0];if(!f)return;
   document.getElementById(`fname-${slug}-${type}`).textContent=f.name;
   document.getElementById(`btnup-${slug}-${type}`).disabled=false;
   document.getElementById(`status-${slug}-${type}`).textContent='';
@@ -325,73 +356,166 @@ async function uploadImage(slug,type){
   const input=document.getElementById(`file-${slug}-${type}`);
   const btn=document.getElementById(`btnup-${slug}-${type}`);
   const status=document.getElementById(`status-${slug}-${type}`);
-  const f=input.files[0];
-  if(!f)return;
-
-  btn.disabled=true;
-  btn.textContent='Uploading...';
-  status.textContent='Mengupload gambar...';
-  status.className='upload-status loading';
-
+  const f=input.files[0];if(!f)return;
+  btn.disabled=true;btn.textContent='Uploading...';
+  status.textContent='Mengupload gambar...';status.className='upload-status loading';
   try{
-    // Upload ke Supabase Storage
     const ext=f.name.split('.').pop();
     const path=`${slug}/${type}-${Date.now()}.${ext}`;
     const uploadRes=await fetch(`${SB}/storage/v1/object/product-images/${path}`,{
-      method:'POST',
-      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':f.type,'x-upsert':'true'},
-      body:f
+      method:'POST',headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':f.type,'x-upsert':'true'},body:f
     });
-
-    if(!uploadRes.ok){
-      const err=await uploadRes.text();
-      throw new Error('Upload gagal: '+err);
-    }
-
-    // Ambil public URL
+    if(!uploadRes.ok)throw new Error('Upload gagal: '+(await uploadRes.text()));
     const publicUrl=`${SB}/storage/v1/object/public/product-images/${path}`;
-
-    // Update tabel product_images
     const col='img_'+type;
     const updateRes=await api(`/rest/v1/product_images?car_slug=eq.${slug}`,{
-      method:'PATCH',
-      body:JSON.stringify({[col]:publicUrl,'updated_at':new Date().toISOString()})
+      method:'PATCH',body:JSON.stringify({[col]:publicUrl,updated_at:new Date().toISOString()})
     });
-
-    if(!updateRes.ok) throw new Error('Gagal update database');
-
-    // Update local state
-    if(!currentImages[slug]) currentImages[slug]={};
+    if(!updateRes.ok)throw new Error('Gagal update database');
+    if(!currentImages[slug])currentImages[slug]={};
     currentImages[slug][col]=publicUrl;
-
-    // Update preview
     const prevEl=document.getElementById(`prev-${slug}-${type}`);
     if(prevEl.tagName==='DIV'){
-      const img=document.createElement('img');
-      img.className='img-preview';
-      img.id=`prev-${slug}-${type}`;
-      img.src=publicUrl;
-      img.alt=type;
-      prevEl.replaceWith(img);
-    }else{
-      prevEl.src=publicUrl+'?t='+Date.now();
-    }
-
-    status.textContent='✓ Berhasil diupload!';
-    status.className='upload-status ok';
-    btn.textContent='Upload';
-    document.getElementById(`fname-${slug}-${type}`).textContent='Belum dipilih';
-    input.value='';
+      const img=document.createElement('img');img.className='img-preview';img.id=`prev-${slug}-${type}`;img.src=publicUrl;img.alt=type;prevEl.replaceWith(img);
+    }else{prevEl.src=publicUrl+'?t='+Date.now();}
+    status.textContent='✓ Berhasil diupload!';status.className='upload-status ok';
+    btn.textContent='Upload';document.getElementById(`fname-${slug}-${type}`).textContent='Belum dipilih';input.value='';
     toast('Gambar '+IMG_LABELS[type]+' berhasil diupload!');
-
   }catch(err){
-    status.textContent='✗ '+err.message;
-    status.className='upload-status err';
-    btn.textContent='Upload';
-    btn.disabled=false;
-    toast(err.message,false);
-    console.error(err);
+    status.textContent='✗ '+err.message;status.className='upload-status err';btn.textContent='Upload';btn.disabled=false;toast(err.message,false);
   }
+}
+
+// ===== WARNA MOBIL =====
+async function loadColorPage(){
+  const container=document.getElementById('colorCarList');
+  container.innerHTML='<div style="text-align:center;padding:40px;color:#aaa;">Memuat data...</div>';
+  try{
+    const r=await api('/rest/v1/color_variants?select=*&order=car_slug,sort_order,id');
+    const all=await r.json();
+    colorData={};
+    all.forEach(row=>{
+      if(!colorData[row.car_slug])colorData[row.car_slug]=[];
+      colorData[row.car_slug].push(row);
+    });
+    container.innerHTML=CARS.map(car=>renderColorCar(car)).join('');
+  }catch(e){
+    container.innerHTML=`<div style="color:#e53935;padding:20px;">Gagal memuat data: ${e.message}</div>`;
+  }
+}
+
+function renderColorCar(car){
+  const groups=CAR_GROUPS[car.slug]||[''];
+  const hasGroups=!(groups.length===1&&groups[0]==='');
+  const groupOptions=hasGroups
+    ?groups.map(g=>`<option value="${g}">${g}</option>`).join('')
+    :'<option value="">-</option>';
+  const items=colorData[car.slug]||[];
+  const itemsHtml=items.length
+    ?items.map(item=>`
+      <div class="color-item" id="ci-${item.id}">
+        <button class="color-item-del" onclick="deleteColor(${item.id},'${car.slug}')">✕</button>
+        <img src="${h(item.image_url)}" alt="${h(item.color_name)}">
+        <div class="color-item-info">
+          ${item.variant_group?`<div class="color-item-group">${h(item.variant_group)}</div>`:''}
+          <div class="color-item-name">${h(item.color_name)}</div>
+        </div>
+      </div>`).join('')
+    :'<div class="color-empty">Belum ada warna. Tambah di atas.</div>';
+
+  return `<div class="color-car-section">
+  <div class="color-car-header"><h3>${car.name}</h3></div>
+  <div class="color-car-body">
+    <div class="color-add-form">
+      <div class="form-row">
+        <div>
+          <label>Nama Warna</label>
+          <input type="text" id="cn-${car.slug}" placeholder="Contoh: Cool Black">
+        </div>
+        <div>
+          <label>Tipe / Grup</label>
+          <select id="cg-${car.slug}">${groupOptions}</select>
+        </div>
+      </div>
+      <label style="margin-top:12px;">Foto Mobil (warna ini)</label>
+      <div class="upload-row" style="margin-top:6px;">
+        <input type="file" class="file-input" id="cf-${car.slug}" accept="image/*"
+          onchange="document.getElementById('cfn-${car.slug}').textContent=this.files[0]?.name||'Belum dipilih'">
+        <button class="btn-choose" onclick="document.getElementById('cf-${car.slug}').click()">Pilih File</button>
+        <span class="file-name" id="cfn-${car.slug}">Belum dipilih</span>
+      </div>
+      <div class="upload-status" id="cs-${car.slug}"></div>
+      <button class="btn-add-color" onclick="addColor('${car.slug}')">+ TAMBAH WARNA</button>
+    </div>
+    <div class="color-list" id="cl-${car.slug}">${itemsHtml}</div>
+  </div>
+</div>`;
+}
+
+async function addColor(slug){
+  const nameEl=document.getElementById(`cn-${slug}`);
+  const groupEl=document.getElementById(`cg-${slug}`);
+  const fileEl=document.getElementById(`cf-${slug}`);
+  const statusEl=document.getElementById(`cs-${slug}`);
+  const name=nameEl.value.trim();
+  const group=groupEl.value;
+  const file=fileEl.files[0];
+  if(!name){alert('Masukkan nama warna terlebih dahulu.');return;}
+  if(!file){alert('Pilih foto mobil terlebih dahulu.');return;}
+  statusEl.textContent='Mengupload foto...';statusEl.className='upload-status loading';
+  try{
+    const ext=file.name.split('.').pop();
+    const path=`${slug}/color-${Date.now()}.${ext}`;
+    const uploadRes=await fetch(`${SB}/storage/v1/object/product-images/${path}`,{
+      method:'POST',headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':file.type,'x-upsert':'true'},body:file
+    });
+    if(!uploadRes.ok)throw new Error('Upload foto gagal: '+(await uploadRes.text()));
+    const imageUrl=`${SB}/storage/v1/object/public/product-images/${path}`;
+    const insertRes=await api('/rest/v1/color_variants',{
+      method:'POST',
+      headers:{'Prefer':'return=representation'},
+      body:JSON.stringify({car_slug:slug,variant_group:group,color_name:name,image_url:imageUrl,sort_order:0})
+    });
+    if(!insertRes.ok)throw new Error('Gagal simpan ke database: '+(await insertRes.text()));
+    const [newRow]=await insertRes.json();
+    if(!colorData[slug])colorData[slug]=[];
+    colorData[slug].push(newRow);
+    const listEl=document.getElementById(`cl-${slug}`);
+    const empty=listEl.querySelector('.color-empty');
+    if(empty)empty.remove();
+    const div=document.createElement('div');
+    div.className='color-item';div.id=`ci-${newRow.id}`;
+    div.innerHTML=`
+      <button class="color-item-del" onclick="deleteColor(${newRow.id},'${slug}')">✕</button>
+      <img src="${imageUrl}" alt="${h(name)}">
+      <div class="color-item-info">
+        ${group?`<div class="color-item-group">${h(group)}</div>`:''}
+        <div class="color-item-name">${h(name)}</div>
+      </div>`;
+    listEl.appendChild(div);
+    nameEl.value='';fileEl.value='';
+    document.getElementById(`cfn-${slug}`).textContent='Belum dipilih';
+    statusEl.textContent='✓ Warna berhasil ditambahkan!';statusEl.className='upload-status ok';
+    toast('Warna '+name+' berhasil ditambahkan!');
+    setTimeout(()=>{statusEl.textContent='';},3000);
+  }catch(err){
+    statusEl.textContent='✗ '+err.message;statusEl.className='upload-status err';toast(err.message,false);
+  }
+}
+
+async function deleteColor(id,slug){
+  if(!confirm('Hapus warna ini?'))return;
+  try{
+    const r=await api(`/rest/v1/color_variants?id=eq.${id}`,{method:'DELETE'});
+    if(!r.ok)throw new Error('Gagal hapus');
+    document.getElementById(`ci-${id}`)?.remove();
+    colorData[slug]=(colorData[slug]||[]).filter(c=>c.id!==id);
+    const listEl=document.getElementById(`cl-${slug}`);
+    if(listEl&&listEl.querySelectorAll('.color-item').length===0){
+      listEl.innerHTML='<div class="color-empty">Belum ada warna. Tambah di atas.</div>';
+    }
+    toast('Warna berhasil dihapus!');
+  }catch(err){toast('Gagal hapus: '+err.message,false);}
 }
 </script>
 </body>
