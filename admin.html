@@ -277,7 +277,7 @@ function showPage(name,el){
   document.getElementById('pageTitle').textContent=titles[name]||name;
   if(name==='testdrive')loadTDFull();
   if(name==='simulasi')loadSimFull();
-  if(name==='gambar')renderCarGrid();
+  if(name==='gambar')await renderCarGrid();
   if(name==='warna')loadColorPage();
 }
 
@@ -321,8 +321,10 @@ async function loadImageData(){
   d.forEach(row=>{currentImages[row.car_slug]=row;});
 }
 
-function renderCarGrid(){
+async function renderCarGrid(){
   const grid=document.getElementById('carGrid');
+  grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:#aaa;">Memuat data...</div>';
+  await loadImageData();
   grid.innerHTML=CARS.map(car=>{
     const imgs=currentImages[car.slug]||{};
     const rows=IMG_TYPES.map(type=>{
