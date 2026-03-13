@@ -268,7 +268,7 @@ function doLogout(){
   document.getElementById('adminApp').style.display='none';
 }
 
-function showPage(name,el){
+async function showPage(name,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.menu-item').forEach(m=>m.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
@@ -316,9 +316,10 @@ async function loadSimFull(){
 }
 
 async function loadImageData(){
+  currentImages={};
   const r=await api('/rest/v1/product_images?select=*');
   const d=await r.json();
-  d.forEach(row=>{currentImages[row.car_slug]=row;});
+  if(Array.isArray(d))d.forEach(row=>{currentImages[row.car_slug]=row;});
 }
 
 async function renderCarGrid(){
