@@ -244,9 +244,10 @@ function toast(msg,ok=true){
 }
 
 async function api(path,opts={}){
+  const {headers:extraHeaders,...restOpts}=opts;
   return fetch(SB+path,{
-    headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json',...(opts.headers||{})},
-    ...opts
+    headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json',...(extraHeaders||{})},
+    ...restOpts
   });
 }
 
