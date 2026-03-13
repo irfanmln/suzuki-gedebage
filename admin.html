@@ -141,7 +141,7 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
       <div class="card">
         <div class="card-header"><span class="card-title">Simulasi Kredit Terbaru</span></div>
         <table class="table">
-          <thead><tr><th>NAMA</th><th>NO. HP</th><th>MOBIL</th><th>TENOR</th><th>UANG MUKA</th></tr></thead>
+          <thead><tr><th>NAMA</th><th>NO. HP</th><th>MOBIL</th><th>TENOR</th><th>UANG MUKA</th><th>DOMISILI</th></tr></thead>
           <tbody id="tbodySim"><tr><td colspan="5" style="text-align:center;color:#aaa;padding:30px;">Memuat data...</td></tr></tbody>
         </table>
       </div>
@@ -171,7 +171,7 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
       <div class="card">
         <div class="card-header"><span class="card-title">Semua Permintaan Simulasi Kredit</span></div>
         <table class="table">
-          <thead><tr><th>NAMA</th><th>NO. HP</th><th>MOBIL</th><th>TENOR</th><th>UANG MUKA</th></tr></thead>
+          <thead><tr><th>NAMA</th><th>NO. HP</th><th>MOBIL</th><th>TENOR</th><th>UANG MUKA</th><th>DOMISILI</th></tr></thead>
           <tbody id="tbodySimFull"><tr><td colspan="5" style="text-align:center;color:#aaa;padding:30px;">Memuat data...</td></tr></tbody>
         </table>
       </div>
@@ -198,8 +198,8 @@ const CARS=[
   {slug:'new-carry-pick-up',name:'New Carry Pick Up'},
 ];
 
-const IMG_TYPES=['hero','exterior','interior'];
-const IMG_LABELS={'hero':'Hero / Banner Utama','exterior':'Banner Eksterior','interior':'Banner Interior'};
+const IMG_TYPES=['listing','hero','exterior','interior'];
+const IMG_LABELS={'listing':'Foto Listing (Kartu Produk)','hero':'Hero / Banner Utama','exterior':'Banner Eksterior','interior':'Banner Interior'};
 
 let currentImages={};
 
@@ -263,7 +263,7 @@ async function loadDashboard(){
     document.getElementById('statTD').textContent=td.length>=5?td.length+'+':td.length;
     document.getElementById('statSim').textContent=sim.length>=5?sim.length+'+':sim.length;
     document.getElementById('tbodyTD').innerHTML=td.length?td.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${fmtDate(r.tanggal)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
-    document.getElementById('tbodySim').innerHTML=sim.length?sim.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
+    document.getElementById('tbodySim').innerHTML=sim.length?sim.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td><td>${h(r.domisili)}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
   }catch(e){console.error(e);}
 }
 
@@ -276,7 +276,7 @@ async function loadTDFull(){
 async function loadSimFull(){
   const r=await api('/rest/v1/simulasi_kredit?select=*&order=id.desc');
   const d=await r.json();
-  document.getElementById('tbodySimFull').innerHTML=d.length?d.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
+  document.getElementById('tbodySimFull').innerHTML=d.length?d.map(r=>`<tr><td>${h(r.nama)}</td><td>${h(r.no_hp)}</td><td>${h(r.mobil)}</td><td>${h(r.tenor)}</td><td>${fmtRp(r.uang_muka)}</td><td>${h(r.domisili)}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px;">Belum ada data</td></tr>';
 }
 
 async function loadImageData(){
