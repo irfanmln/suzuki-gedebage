@@ -11,7 +11,7 @@ body{font-family:'Montserrat',sans-serif;color:#222;}
 a{text-decoration:none;color:inherit;}
 nav{position:fixed;top:0;left:0;width:100%;background:#fff;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 40px;}
-.nav-logo img{height:38px;}
+.nav-logo img{height:28px;width:auto;display:block;}
 .nav-links{display:flex;gap:32px;list-style:none;}
 .nav-links a{font-size:14px;font-weight:600;color:#222;letter-spacing:0.5px;transition:color .2s;}
 .nav-links a:hover{color:#1a3a8f;}
@@ -80,6 +80,17 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
 .yt-sec h2{font-size:22px;font-weight:800;margin-bottom:24px;color:#111;text-transform:uppercase;}
 .yt-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px;}
 .yt-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.nav-ham span{display:block;width:24px;height:2px;background:#222;}
+.nav-mobile{display:none;position:fixed;top:62px;left:0;right:0;background:#fff;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.1);padding:8px 0;}
+.nav-mobile a{display:block;padding:14px 24px;font-size:14px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#222;border-bottom:1px solid #f0f0f0;}
+.nav-mobile a:last-child{border-bottom:none;}
+.nav-mobile.open{display:block;}
+@media(max-width:640px){
+  .nav-inner{padding:0 20px;}
+  .nav-links{display:none;}
+  .nav-ham{display:flex;}
+}
 @media(max-width:768px){
   .nav-inner{padding:12px 20px;}
   .hero-overlay{padding:24px 20px;}
@@ -102,8 +113,14 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
       <li><a href="produk.html">PRODUK</a></li>
       <li><a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a></li>
     </ul>
+    <button class="nav-ham" onclick="toggleMenu()" id="hamBtn"><span></span><span></span><span></span></button>
   </div>
-</nav><div class="hero">
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">HOME</a>
+  <a href="produk.html">PRODUK</a>
+  <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
+</div><div class="hero">
   <img id="heroImg" class="hero-img" src="" alt="All New Ertiga" style="display:none;">
   <div id="heroPlaceholder" class="hero-placeholder">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
@@ -247,5 +264,13 @@ async function submitForm(e,t){
   closeModal(t); e.target.reset();
 }
 document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none'}));
+
+function toggleMenu(){document.getElementById('navMobile').classList.toggle('open');}
+document.addEventListener('click',function(e){
+  const mob=document.getElementById('navMobile');
+  const ham=document.getElementById('hamBtn');
+  if(mob&&ham&&!mob.contains(e.target)&&!ham.contains(e.target)){mob.classList.remove('open');}
+});
+
 loadImages();
 </script></body></html>
