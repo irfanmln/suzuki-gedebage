@@ -171,11 +171,13 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   <div class="color-main-wrap"><img class="color-main" id="colorMainImg" src="" alt="color" style="display:none;"></div>
   <div class="color-lbl" id="colorLbl"></div>
   <div class="ctabs">
-    <button class="ctab active" onclick="switchColorTab('SGX',this)">SGX</button>
+    <button class="ctab active" onclick="switchColorTab('SGX 2TONE',this)">SGX 2TONE</button>
+    <button class="ctab" onclick="switchColorTab('SGX',this)">SGX</button>
     <button class="ctab" onclick="switchColorTab('GX',this)">GX</button>
     <button class="ctab" onclick="switchColorTab('GL',this)">GL</button>
   </div>
-  <div class="ctab-panel active" id="cpanel-SGX"><div class="color-thumbs" id="colorThumbs-SGX"></div></div>
+  <div class="ctab-panel active" id="cpanel-SGX 2TONE"><div class="color-thumbs" id="colorThumbs-SGX 2TONE"></div></div>
+  <div class="ctab-panel" id="cpanel-SGX"><div class="color-thumbs" id="colorThumbs-SGX"></div></div>
   <div class="ctab-panel" id="cpanel-GX"><div class="color-thumbs" id="colorThumbs-GX"></div></div>
   <div class="ctab-panel" id="cpanel-GL"><div class="color-thumbs" id="colorThumbs-GL"></div></div>
 </div>
@@ -249,7 +251,7 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
     <div class="foot-contact">
       <div class="foot-title">Informasi Kontak</div>
       <p>📞 +62 851-7334-0806</p>
-      <p>✉️ irfan.suzukibdg@gmail.com</p>
+      <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddb4afbbbcb3f3aea8a7a8b6b4bfb9ba9dbab0bcb4b1f3beb2b0">[email&#160;protected]</a></p>
       <p>📍 Jl. Soekarno-Hatta No.700, Cipamokolan, Kec. Rancasari, Kota Bandung, Jawa Barat 40292</p>
     </div>
   </div>
@@ -306,7 +308,7 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const SB_URL='https://jglkpcywzmmaetbxwllr.supabase.co';
 const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ';
 const CAR_SLUG='fronx';
@@ -425,12 +427,3 @@ async function submitTestDriveForm(e){
       })
     });
     document.getElementById('formTD').style.display='none';
-    document.getElementById('tdSuccess').style.display='block';
-  }catch(err){alert('Gagal mengirim. Silakan coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
-}
-
-loadImages();
-loadColors();
-</script>
-</body>
-</html>
