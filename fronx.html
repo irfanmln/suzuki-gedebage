@@ -330,12 +330,17 @@ function switchColorTab(group,btn){
 
 async function loadImages(){
   try{
+    console.log('[DEBUG] Fetching images for slug:', CAR_SLUG);
     const r=await fetch(SB_URL+'/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
       headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
     });
     const rows=await r.json();
-    if(!rows||!rows.length)return;
+    console.log('[DEBUG] product_images rows:', JSON.stringify(rows));
+    if(!rows||!rows.length){console.log('[DEBUG] No rows found for slug:', CAR_SLUG);return;}
     const d=rows[0];
+    console.log('[DEBUG] img_hero:', d.img_hero);
+    console.log('[DEBUG] img_exterior:', d.img_exterior);
+    console.log('[DEBUG] img_interior:', d.img_interior);
     if(d.img_hero&&d.img_hero.trim()){
       const el=document.getElementById('heroImg');
       if(el){el.src=d.img_hero;el.style.display='block';}
@@ -354,7 +359,7 @@ async function loadImages(){
       const ph=document.getElementById('intPlaceholder');
       if(ph)ph.style.display='none';
     }
-  }catch(e){console.error('loadImages error:',e);}
+  }catch(e){console.error('[DEBUG] loadImages error:',e);}
 }
 
 async function loadColors(){
