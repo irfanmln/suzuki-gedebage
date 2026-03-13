@@ -128,10 +128,10 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
     <div class="hero-price">MULAI 241.750.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>All New Ertiga memiliki kabin yang luas untuk kenyamanan ekstra selama perjalanan. Kombinasi head unit yang canggih dengan aksen wooden panel membuat dashboard terasa mewah sekaligus elegan.</p></div><div class="sec-banner">
-  <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
+  <img id="extImg" class="sec-banner-img" src="https://www.suzuki.co.id/uploads/model/exterior/all-new-ertiga.jpg" alt="Eksterior" style="width:100%;height:100%;object-fit:cover;">
   <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Lapang, Mewah, Dan Nyaman</div><div class="col-d">Kami percaya berkendara bukan hanya sebuah perjalanan. Bersama keluarga, banyak cerita dan kehangatan tercipta dari sebuah perjalanan.</div></div><div class="sec-banner">
-  <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
+  <img id="intImg" class="sec-banner-img" src="https://www.suzuki.co.id/uploads/model/interior/all-new-ertiga.jpg" alt="Interior" style="width:100%;height:100%;object-fit:cover;">
   <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>Elegant Interior</h2><p>Kenyamanan yang lebih baik menghabiskan waktu di perjalanan bersama keluarga semakin menyenangkan, dengan kabin yang lega serta jok yang nyaman bagaikan berada dalam ruang keluarga di rumah.</p></div><div class="color-sec">
   <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/ertiga/ertiga-zuf-zzl.png" alt="color">
@@ -207,171 +207,84 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
     </form>
   </div>
 </div><script>
-const SB_URL='https://jglkpcywzmmaetbxwllr.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ';
-const STORAGE='https://jglkpcywzmmaetbxwllr.supabase.co/storage/v1/object/public/product-images';
+const SB_URL='https://jglkpcywzmmaetbxwllr.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ';
 const CAR_SLUG='all-new-ertiga';
-
-// Load images from Supabase
-async function loadImages(){
-  try{
-    const r=await fetch(SB_URL+'/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
-      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
-    });
-    const [d]=await r.json();
-    if(!d) return;
-    if(d.img_hero){
-      const heroImg=document.getElementById('heroImg');
-      const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; }
-      if(heroPlaceholder) heroPlaceholder.style.display='none';
-    }
-    if(d.img_exterior){
-      const extImg=document.getElementById('extImg');
-      const extPh=document.getElementById('extPlaceholder');
-      if(extImg){ extImg.src=d.img_exterior; extImg.style.display='block'; }
-      if(extPh) extPh.style.display='none';
-    }
-    if(d.img_interior){
-      const intImg=document.getElementById('intImg');
-      const intPh=document.getElementById('intPlaceholder');
-      if(intImg){ intImg.src=d.img_interior; intImg.style.display='block'; }
-      if(intPh) intPh.style.display='none';
-    }
-  }catch(e){console.log('Image load error',e);}
-}
-
-function openModal(t){document.getElementById('modal-'+t).style.display='flex';}
-function closeModal(t){document.getElementById('modal-'+t).style.display='none';}
 function changeColor(el,src,name){
   document.getElementById('cMain').src=src;
   document.getElementById('cName').textContent=name;
   document.querySelectorAll('.color-thumbs img').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
 }
-  try{await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},body:JSON.stringify(data)});}catch(err){}
-  alert('Terima kasih! Tim kami akan menghubungi Anda segera.');
-  closeModal(t); e.target.reset();
-}
-document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none'}));
 
 function toggleMenu(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){
-  const mob=document.getElementById('navMobile');
-  const ham=document.getElementById('hamBtn');
-  if(mob&&ham&&!mob.contains(e.target)&&!ham.contains(e.target)){mob.classList.remove('open');}
+  const mob=document.getElementById('navMobile'),ham=document.getElementById('hamBtn');
+  if(mob&&ham&&!mob.contains(e.target)&&!ham.contains(e.target))mob.classList.remove('open');
 });
+document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none'}));
 
-
-async function submitSimulasi(e, carName){
+async function submitSimulasi(e){
   e.preventDefault();
-  const nama = document.getElementById('sim-nama').value.trim();
-  const hp = document.getElementById('sim-hp').value.trim();
+  const nama=document.getElementById('sim-nama').value.trim();
+  const hp=document.getElementById('sim-hp').value.trim();
   if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
-  const btn = e.target.querySelector('button[type=submit]');
-  btn.disabled=true; btn.textContent='Mengirim...';
+  const btn=e.target.querySelector('button[type=submit]');
+  btn.disabled=true;btn.textContent='Mengirim...';
   try{
     await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/simulasi_kredit',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
       body:JSON.stringify({
-        nama, no_hp:hp,
-        mobil: document.getElementById('sim-mobil').value,
-        tenor: document.getElementById('sim-tenor').value,
-        uang_muka: document.getElementById('sim-dp').value ? parseInt(document.getElementById('sim-dp').value) : null,
-        domisili: document.getElementById('sim-domisili').value.trim()
+        nama,no_hp:hp,
+        mobil:document.getElementById('sim-mobil').value,
+        tenor:document.getElementById('sim-tenor').value,
+        uang_muka:document.getElementById('sim-dp').value?parseInt(document.getElementById('sim-dp').value):null,
+        domisili:document.getElementById('sim-domisili').value.trim()
       })
     });
     e.target.style.display='none';
     document.getElementById('simSuccess').style.display='block';
-  }catch(err){
-    alert('Gagal mengirim. Silakan coba lagi.');
-    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
-  }
+  }catch(err){alert('Gagal. Coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
 }
+
 async function submitTestDriveForm(e){
   e.preventDefault();
-  const nama = document.getElementById('td-nama').value.trim();
-  const hp = document.getElementById('td-hp').value.trim();
+  const nama=document.getElementById('td-nama').value.trim();
+  const hp=document.getElementById('td-hp').value.trim();
   if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
-  const btn = e.target.querySelector('button[type=submit]');
-  btn.disabled=true; btn.textContent='Mengirim...';
+  const btn=e.target.querySelector('button[type=submit]');
+  btn.disabled=true;btn.textContent='Mengirim...';
   try{
     await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/test_drive',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
       body:JSON.stringify({
-        nama, no_hp:hp,
-        mobil: document.getElementById('td-mobil').value,
-        tanggal: document.getElementById('td-tgl').value
+        nama,no_hp:hp,
+        mobil:document.getElementById('td-mobil').value,
+        tanggal:document.getElementById('td-tgl').value
       })
     });
     e.target.style.display='none';
     document.getElementById('tdSuccess').style.display='block';
-  }catch(err){
-    alert('Gagal mengirim. Silakan coba lagi.');
-    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
-  }
+  }catch(err){alert('Gagal. Coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
 }
 
-function openModal(t){document.getElementById("modal-"+t).style.display="flex";}
-function closeModal(t){document.getElementById("modal-"+t).style.display="none";}
-
-document.querySelectorAll('#modal-td,#modal-sim').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none';}));
-
-async function submitSimulasi(e, carName){
-  e.preventDefault();
-  const nama = document.getElementById('sim-nama').value.trim();
-  const hp = document.getElementById('sim-hp').value.trim();
-  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
-  const btn = e.target.querySelector('button[type=submit]');
-  btn.disabled=true; btn.textContent='Mengirim...';
+async function loadImages(){
   try{
-    await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/simulasi_kredit',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
-      body:JSON.stringify({
-        nama, no_hp:hp,
-        mobil: document.getElementById('sim-mobil').value,
-        tenor: document.getElementById('sim-tenor').value,
-        uang_muka: document.getElementById('sim-dp').value ? parseInt(document.getElementById('sim-dp').value) : null,
-        domisili: document.getElementById('sim-domisili').value.trim()
-      })
+    const r=await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
+      headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'}
     });
-    e.target.style.display='none';
-    document.getElementById('simSuccess').style.display='block';
-  }catch(err){
-    alert('Gagal mengirim. Silakan coba lagi.');
-    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
-  }
+    const rows=await r.json();
+    if(!rows||!rows.length)return;
+    const d=rows[0];
+    const heroImg=document.getElementById('heroImg');
+    if(d.img_hero&&heroImg)heroImg.src=d.img_hero;
+    const extImg=document.getElementById('extImg');
+    if(d.img_exterior&&extImg)extImg.src=d.img_exterior;
+    const intImg=document.getElementById('intImg');
+    if(d.img_interior&&intImg)intImg.src=d.img_interior;
+  }catch(e){console.log('img error',e);}
 }
-async function submitTestDriveForm(e){
-  e.preventDefault();
-  const nama = document.getElementById('td-nama').value.trim();
-  const hp = document.getElementById('td-hp').value.trim();
-  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
-  const btn = e.target.querySelector('button[type=submit]');
-  btn.disabled=true; btn.textContent='Mengirim...';
-  try{
-    await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/test_drive',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
-      body:JSON.stringify({
-        nama, no_hp:hp,
-        mobil: document.getElementById('td-mobil').value,
-        tanggal: document.getElementById('td-tgl').value
-      })
-    });
-    e.target.style.display='none';
-    document.getElementById('tdSuccess').style.display='block';
-  }catch(err){
-    alert('Gagal mengirim. Silakan coba lagi.');
-    btn.disabled=false; btn.textContent='KIRIM PERMINTAAN';
-  }
-}
-
-function openModal(t){document.getElementById("modal-"+t).style.display="flex";}
-function closeModal(t){document.getElementById("modal-"+t).style.display="none";}
-
-document.querySelectorAll('#modal-td,#modal-sim').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none';}));
 loadImages();
 </script></body></html>
