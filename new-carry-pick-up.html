@@ -121,7 +121,7 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   
   <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
 </div><div class="hero">
-  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/carry-pick-up.jpg" alt="New Carry Pick Up">
+  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/new-carry.jpg" alt="hero">
   <div id="heroPlaceholder" class="hero-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
     <div class="hero-name">New Carry Pick Up</div>
@@ -216,14 +216,14 @@ async function loadImages(){
     if(!rows||!rows.length)return;
     const d=rows[0];
     if(d.img_hero&&d.img_hero.trim()){const el=document.getElementById('heroImg');if(el)el.src=d.img_hero;}
-    if(d.img_exterior&&d.img_exterior.trim()){const el=document.getElementById('extImg');if(el)el.src=d.img_exterior;const ph=document.getElementById('extPlaceholder');if(ph)ph.style.display='none';}
-    if(d.img_interior&&d.img_interior.trim()){const el=document.getElementById('intImg');if(el)el.src=d.img_interior;const ph=document.getElementById('intPlaceholder');if(ph)ph.style.display='none';}
-    if(d.img_listing){const el=document.querySelector('[data-slug="'+CAR_SLUG+'"] img');if(el)el.src=d.img_listing;}
+    if(d.img_exterior&&d.img_exterior.trim()){const el=document.getElementById('extImg');if(el)el.src=d.img_exterior;}
+    if(d.img_interior&&d.img_interior.trim()){const el=document.getElementById('intImg');if(el)el.src=d.img_interior;}
   }catch(e){console.error('loadImages:',e);}
 }
 
 function openModal(t){document.getElementById('modal-'+t).style.display='flex';}
 function closeModal(t){document.getElementById('modal-'+t).style.display='none';}
+
   try{await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},body:JSON.stringify(data)});}catch(err){}
   alert('Terima kasih! Tim kami akan menghubungi Anda segera.');
   closeModal(t); e.target.reset();
@@ -353,8 +353,8 @@ loadImages();
 loadColors();
 async function loadColors(){
   try{
-    const r=await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/color_variants?car_slug=eq.'+CAR_SLUG+'&order=sort_order,id&select=*',{
-      headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'}
+    const r=await fetch(SB_URL+'/rest/v1/color_variants?car_slug=eq.'+CAR_SLUG+'&order=sort_order,id&select=*',{
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
     });
     const items=await r.json();
     if(!items||!items.length)return;
