@@ -108,7 +108,6 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
 .ctab{padding:7px 18px;border:2px solid #1a3a8f;border-radius:20px;background:#fff;color:#1a3a8f;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:.2s;}
 .ctab.active,.ctab:hover{background:#1a3a8f;color:#fff;}
 .ctab-panel{display:none;}.ctab-panel.active{display:block;}
-
 </style>
 </head>
 <body><nav>
@@ -134,10 +133,10 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
     <div class="hero-price">MULAI 241.750.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>All New Ertiga memiliki kabin yang luas untuk kenyamanan ekstra selama perjalanan. Kombinasi head unit yang canggih dengan aksen wooden panel membuat dashboard terasa mewah sekaligus elegan.</p></div><div class="sec-banner">
-  <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
+  <img id="extImg" src="https://www.suzuki.co.id/uploads/model/exterior/ertiga.jpg" alt="Eksterior" style="width:100%;height:100%;object-fit:cover;">
   <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Lapang, Mewah, Dan Nyaman</div><div class="col-d">Kami percaya berkendara bukan hanya sebuah perjalanan. Bersama keluarga, banyak cerita dan kehangatan tercipta dari sebuah perjalanan.</div></div><div class="sec-banner">
-  <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
+  <img id="intImg" src="https://www.suzuki.co.id/uploads/model/interior/ertiga.jpg" alt="Interior" style="width:100%;height:100%;object-fit:cover;">
   <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>Elegant Interior</h2><p>Kenyamanan yang lebih baik menghabiskan waktu di perjalanan bersama keluarga semakin menyenangkan, dengan kabin yang lega serta jok yang nyaman bagaikan berada dalam ruang keluarga di rumah.</p></div><div class="color-sec" id="colorSec">
   <div class="color-sec-title">PILIHAN WARNA</div>
@@ -216,27 +215,14 @@ async function loadImages(){
     const r=await fetch(SB_URL+'/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
       headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
     });
-    const [d]=await r.json();
-    if(!d) return;
-    if(d.img_hero){
-      const heroImg=document.getElementById('heroImg');
-      const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; }
-      if(heroPlaceholder) heroPlaceholder.style.display='none';
-    }
-    if(d.img_exterior){
-      const extImg=document.getElementById('extImg');
-      const extPh=document.getElementById('extPlaceholder');
-      if(extImg){ extImg.src=d.img_exterior; extImg.style.display='block'; }
-      if(extPh) extPh.style.display='none';
-    }
-    if(d.img_interior){
-      const intImg=document.getElementById('intImg');
-      const intPh=document.getElementById('intPlaceholder');
-      if(intImg){ intImg.src=d.img_interior; intImg.style.display='block'; }
-      if(intPh) intPh.style.display='none';
-    }
-  }catch(e){console.log('Image load error',e);}
+    const rows=await r.json();
+    if(!rows||!rows.length)return;
+    const d=rows[0];
+    if(d.img_hero&&d.img_hero.trim()){const el=document.getElementById('heroImg');if(el)el.src=d.img_hero;}
+    if(d.img_exterior&&d.img_exterior.trim()){const el=document.getElementById('extImg');if(el)el.src=d.img_exterior;const ph=document.getElementById('extPlaceholder');if(ph)ph.style.display='none';}
+    if(d.img_interior&&d.img_interior.trim()){const el=document.getElementById('intImg');if(el)el.src=d.img_interior;const ph=document.getElementById('intPlaceholder');if(ph)ph.style.display='none';}
+    if(d.img_listing){const el=document.querySelector('[data-slug="'+CAR_SLUG+'"] img');if(el)el.src=d.img_listing;}
+  }catch(e){console.error('loadImages:',e);}
 }
 
 function openModal(t){document.getElementById('modal-'+t).style.display='flex';}
@@ -367,60 +353,46 @@ function closeModal(t){document.getElementById("modal-"+t).style.display="none";
 
 document.querySelectorAll('#modal-td,#modal-sim').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none';}));
 loadImages();
-
-function switchColorTab(group, btn) {
-  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.ctab-panel').forEach(p => p.classList.remove('active'));
+loadColors();
+function switchColorTab(group,btn){
+  document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ctab-panel').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');
-  const panel = document.getElementById('cpanel-' + group);
-  if (panel) panel.classList.add('active');
-  // update main image to first color of this group
-  const firstThumb = panel && panel.querySelector('.color-thumb');
-  if (firstThumb) firstThumb.click();
+  const panel=document.getElementById('cpanel-'+group);
+  if(panel)panel.classList.add('active');
+  const firstThumb=panel&&panel.querySelector('.color-thumb');
+  if(firstThumb)firstThumb.click();
 }
-
-async function loadColors() {
-  try {
-    const r = await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/color_variants?car_slug=eq.'+CAR_SLUG+'&order=sort_order,id&select=*', {
-      headers: {'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'}
+async function loadColors(){
+  try{
+    const r=await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/color_variants?car_slug=eq.'+CAR_SLUG+'&order=sort_order,id&select=*',{
+      headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'}
     });
-    const items = await r.json();
-    if (!items || !items.length) return;
-    const mainImg = document.getElementById('colorMainImg');
-    const lblEl = document.getElementById('colorLbl');
-    // Group by variant_group
-    const grouped = {};
-    items.forEach(item => {
-      const g = item.variant_group || '';
-      if (!grouped[g]) grouped[g] = [];
-      grouped[g].push(item);
-    });
-    let firstSet = true;
-    Object.entries(grouped).forEach(([group, colors]) => {
-      const thumbsEl = document.getElementById('colorThumbs-' + group);
-      if (!thumbsEl) return;
-      thumbsEl.innerHTML = '';
-      colors.forEach((item, i) => {
-        const div = document.createElement('div');
-        div.className = 'color-thumb' + (firstSet && i === 0 ? ' active' : '');
-        div.innerHTML = '<img src="'+item.image_url+'" alt="'+item.color_name+'"><p>'+item.color_name+'</p>';
-        div.onclick = function() {
-          mainImg.src = item.image_url;
-          mainImg.style.display = '';
-          lblEl.textContent = item.color_name;
-          // Clear active from all thumbs in all panels
-          document.querySelectorAll('.color-thumb').forEach(t => t.classList.remove('active'));
+    const items=await r.json();
+    if(!items||!items.length)return;
+    const mainImg=document.getElementById('colorMainImg');
+    const lblEl=document.getElementById('colorLbl');
+    const grouped={};
+    items.forEach(item=>{const g=item.variant_group||'';if(!grouped[g])grouped[g]=[];grouped[g].push(item);});
+    let firstSet=true;
+    Object.entries(grouped).forEach(([group,colors])=>{
+      const thumbsEl=document.getElementById('colorThumbs-'+group);
+      if(!thumbsEl)return;
+      thumbsEl.innerHTML='';
+      colors.forEach((item,i)=>{
+        const div=document.createElement('div');
+        div.className='color-thumb'+(firstSet&&i===0?' active':'');
+        div.innerHTML='<img src="'+item.image_url+'" alt="'+item.color_name+'"><p>'+item.color_name+'</p>';
+        div.onclick=function(){
+          mainImg.src=item.image_url;mainImg.style.display='';
+          lblEl.textContent=item.color_name;
+          document.querySelectorAll('.color-thumb').forEach(t=>t.classList.remove('active'));
           div.classList.add('active');
         };
         thumbsEl.appendChild(div);
-        if (firstSet && i === 0) {
-          mainImg.src = item.image_url;
-          mainImg.style.display = '';
-          lblEl.textContent = item.color_name;
-          firstSet = false;
-        }
+        if(firstSet&&i===0){mainImg.src=item.image_url;mainImg.style.display='';lblEl.textContent=item.color_name;firstSet=false;}
       });
     });
-  } catch(e) { console.error('loadColors error:', e); }
+  }catch(e){console.error('loadColors:',e);}
 }
 </script></body></html>
