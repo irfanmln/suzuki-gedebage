@@ -37,12 +37,12 @@ nav{position:fixed;top:0;left:0;width:100%;background:#fff;z-index:1000;box-shad
 .sec-ct{padding:60px 40px 20px;text-align:center;}
 .sec-ct h2{font-size:30px;font-weight:800;color:#111;}
 .sec-ct p{margin-top:14px;font-size:15px;line-height:1.8;color:#555;max-width:800px;margin-left:auto;margin-right:auto;}
-.color-sec{padding:40px 40px 60px;text-align:center;}
-.color-main{width:340px;height:230px;object-fit:contain;margin:0 auto 12px;display:block;transition:opacity .3s;}
-.color-lbl{font-size:13px;font-weight:700;letter-spacing:1.5px;color:#333;margin-bottom:22px;}
-.color-thumbs{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-.color-thumbs img{width:76px;height:52px;object-fit:contain;cursor:pointer;opacity:0.45;transition:opacity .2s;border-bottom:3px solid transparent;padding-bottom:3px;}
-.color-thumbs img.active{opacity:1;border-bottom:3px solid #1a3a8f;}
+
+
+
+
+
+
 .harga-sec{padding:40px 80px 60px;}
 .harga-sec h2{font-size:22px;font-weight:800;margin-bottom:24px;color:#111;}
 .htable{width:100%;border-collapse:collapse;}
@@ -101,8 +101,40 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   .feat-grid{grid-template-columns:1fr;}
   .foot-grid{grid-template-columns:1fr;gap:24px;}
   footer{padding:40px 20px 90px;}
-  .color-main{width:260px;height:180px;}
+
 }
+
+.color-sec{padding:48px 40px 64px;background:#f8f8f8;}
+.color-sec-title{text-align:center;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#003087;margin-bottom:32px;}
+.color-tabs{display:flex;justify-content:center;gap:0;margin-bottom:32px;}
+.color-tab{padding:10px 32px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:2px solid #003087;background:#fff;color:#003087;transition:all .2s;}
+.color-tab:first-child{border-radius:4px 0 0 4px;}
+.color-tab:last-child{border-radius:0 4px 4px 0;}
+.color-tab.active{background:#003087;color:#fff;}
+.color-panel{display:none;}
+.color-panel.active{display:block;}
+.color-main-wrap{text-align:center;margin-bottom:20px;}
+.color-main{width:380px;height:240px;object-fit:contain;display:inline-block;transition:opacity .25s;}
+.color-lbl{font-size:13px;font-weight:700;letter-spacing:1.5px;color:#333;margin-bottom:24px;text-align:center;}
+.color-thumbs{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.color-thumb{text-align:center;cursor:pointer;opacity:0.5;transition:opacity .2s;}
+.color-thumb.active{opacity:1;}
+.color-thumb img{width:100px;height:68px;object-fit:contain;display:block;margin:0 auto 6px;}
+.color-thumb .swatch{height:10px;width:80px;margin:0 auto 4px;border-radius:2px;border:1px solid #ddd;}
+.color-thumb .swatch.black{background:#111;}
+.color-thumb .swatch.white{background:#f5f5f5;border:1px solid #ccc;}
+.color-thumb .swatch.blue-black{background:linear-gradient(90deg,#9ec8d8 50%,#111 50%);}
+.color-thumb .swatch.white-black{background:linear-gradient(90deg,#f5f5f5 50%,#111 50%);border:1px solid #ccc;}
+.color-thumb .swatch.ivory-black{background:linear-gradient(90deg,#d4c9a8 50%,#111 50%);}
+.color-thumb .swatch.ivory{background:#d4c9a8;}
+.color-thumb .swatch.grey{background:#9e9e9e;}
+.color-thumb p{font-size:10px;font-weight:700;letter-spacing:0.5px;color:#555;line-height:1.3;}
+@media(max-width:640px){
+  .color-main{width:260px;height:170px;}
+  .color-thumb img{width:72px;height:50px;}
+  .color-tab{padding:9px 18px;font-size:11px;}
+}
+
 </style>
 </head>
 <body><nav>
@@ -134,9 +166,90 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   <img id="intImg" class="sec-banner-img" src="https://www.suzuki.co.id/uploads/model/interior/fronx.jpg" alt="Interior" style="width:100%;height:100%;object-fit:cover;">
   <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>A Scene Of Bliss That You Adore</h2><p>Didesain dengan mendetail untuk pengendara dan penumpang, interior Suzuki Fronx membuat perjalanan menjadi lebih nyaman.</p></div><div class="color-sec">
-  <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png" alt="color">
-  <div id="cName" class="color-lbl">ICE GRAYISH BLUE - BLACK</div>
-  <div class="color-thumbs"><img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png" alt="ICE GRAYISH BLUE - BLACK" class="active" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png','ICE GRAYISH BLUE - BLACK')">
+  <div class="color-sec-title">PILIHAN WARNA</div>
+  <div class="color-tabs">
+    <button class="color-tab active" onclick="switchTab('sgx')">SGX</button>
+    <button class="color-tab" onclick="switchTab('gx')">GX</button>
+    <button class="color-tab" onclick="switchTab('gl')">GL</button>
+  </div>
+
+  <!-- SGX -->
+  <div id="panel-sgx" class="color-panel active">
+    <div class="color-main-wrap"><img id="cMain-sgx" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png" alt="color"></div>
+    <div id="cLbl-sgx" class="color-lbl">ICE GRAYISH BLUE - BLACK</div>
+    <div class="color-thumbs">
+      <div class="color-thumb active" onclick="changeColor('sgx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png','ICE GRAYISH BLUE - BLACK')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png" alt="Ice Grayish Blue - Black">
+        <div class="swatch blue-black"></div><p>ICE GRAYISH<br>BLUE - BLACK</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('sgx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf-zzl.png','PEARL SNOW WHITE - BLACK')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf-zzl.png" alt="Pearl Snow White - Black">
+        <div class="swatch white-black"></div><p>PEARL SNOW<br>WHITE - BLACK</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('sgx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z2t-zzl.png','SAVANNA IVORY - BLACK')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z2t-zzl.png" alt="Savanna Ivory - Black">
+        <div class="swatch ivory-black"></div><p>SAVANNA IVORY<br>- BLACK</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('sgx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png','COOL BLACK')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png" alt="Cool Black">
+        <div class="swatch black"></div><p>COOL BLACK</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('sgx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png','PEARL SNOW WHITE')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png" alt="Pearl Snow White">
+        <div class="swatch white"></div><p>PEARL SNOW<br>WHITE</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('sgx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z2t.png','SAVANNA IVORY')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z2t.png" alt="Savanna Ivory">
+        <div class="swatch ivory"></div><p>SAVANNA IVORY</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GX -->
+  <div id="panel-gx" class="color-panel">
+    <div class="color-main-wrap"><img id="cMain-gx" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png" alt="color"></div>
+    <div id="cLbl-gx" class="color-lbl">COOL BLACK</div>
+    <div class="color-thumbs">
+      <div class="color-thumb active" onclick="changeColor('gx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png','COOL BLACK')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png" alt="Cool Black">
+        <div class="swatch black"></div><p>COOL BLACK</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('gx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png','PEARL SNOW WHITE')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png" alt="Pearl Snow White">
+        <div class="swatch white"></div><p>PEARL SNOW<br>WHITE</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('gx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzr.png','METALLIC MAGMA GREY')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzr.png" alt="Metallic Magma Grey">
+        <div class="swatch grey"></div><p>METALLIC<br>MAGMA GREY</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('gx',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z2t.png','SAVANNA IVORY')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z2t.png" alt="Savanna Ivory">
+        <div class="swatch ivory"></div><p>SAVANNA IVORY</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GL -->
+  <div id="panel-gl" class="color-panel">
+    <div class="color-main-wrap"><img id="cMain-gl" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png" alt="color"></div>
+    <div id="cLbl-gl" class="color-lbl">COOL BLACK</div>
+    <div class="color-thumbs">
+      <div class="color-thumb active" onclick="changeColor('gl',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png','COOL BLACK')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzl.png" alt="Cool Black">
+        <div class="swatch black"></div><p>COOL BLACK</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('gl',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png','PEARL SNOW WHITE')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png" alt="Pearl Snow White">
+        <div class="swatch white"></div><p>PEARL SNOW<br>WHITE</p>
+      </div>
+      <div class="color-thumb" onclick="changeColor('gl',this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzr.png','METALLIC MAGMA GREY')">
+        <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzr.png" alt="Metallic Magma Grey">
+        <div class="swatch grey"></div><p>METALLIC<br>MAGMA GREY</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="color-thumbs"><img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png" alt="ICE GRAYISH BLUE - BLACK" class="active" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png','ICE GRAYISH BLUE - BLACK')">
 <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png" alt="PEARL ARCTIC WHITE" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf.png','PEARL ARCTIC WHITE')">
 <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf-zzl.png" alt="PEARL ARCTIC WHITE - BLACK" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zuf-zzl.png','PEARL ARCTIC WHITE - BLACK')">
 <img src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzr.png" alt="MINERAL GREY METALLIC" onclick="changeColor(this,'https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-zzr.png','MINERAL GREY METALLIC')">
@@ -172,7 +285,7 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
     <div class="foot-contact">
       <div class="foot-title">Informasi Kontak</div>
       <p>📞 +62 851-7334-0806</p>
-      <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="01687367606f2f72747b746a6863656641666c60686d2f626e6c">[email&#160;protected]</a></p>
+      <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="335a4155525d1d40464946585a51575473545e525a5f1d505c5e">[email&#160;protected]</a></p>
       <p>📍 Jl. Soekarno-Hatta No.700, Cipamokolan, Kec. Rancasari, Kota Bandung, Jawa Barat 40292</p>
     </div>
   </div>
@@ -219,6 +332,20 @@ document.addEventListener('click',function(e){
 });
 document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.style.display='none'}));
 
+function switchTab(tab) {
+  document.querySelectorAll('.color-tab').forEach((t,i)=>{
+    t.classList.toggle('active', ['sgx','gx','gl'][i]===tab);
+  });
+  document.querySelectorAll('.color-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+}
+function changeColor(tab, el, src, name) {
+  document.getElementById('cMain-'+tab).src = src;
+  document.getElementById('cLbl-'+tab).textContent = name;
+  el.closest('.color-thumbs').querySelectorAll('.color-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
 async function submitSimulasi(e){
   e.preventDefault();
   const nama=document.getElementById('sim-nama').value.trim();
@@ -227,9 +354,9 @@ async function submitSimulasi(e){
   const btn=e.target.querySelector('button[type=submit]');
   btn.disabled=true;btn.textContent='Mengirim...';
   try{
-    await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/simulasi_kredit',{
+    await fetch(SB_URL+'/rest/v1/simulasi_kredit',{
       method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
       body:JSON.stringify({
         nama,no_hp:hp,
         mobil:document.getElementById('sim-mobil').value,
@@ -251,9 +378,9 @@ async function submitTestDriveForm(e){
   const btn=e.target.querySelector('button[type=submit]');
   btn.disabled=true;btn.textContent='Mengirim...';
   try{
-    await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/test_drive',{
+    await fetch(SB_URL+'/rest/v1/test_drive',{
       method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'},
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
       body:JSON.stringify({
         nama,no_hp:hp,
         mobil:document.getElementById('td-mobil').value,
@@ -267,8 +394,8 @@ async function submitTestDriveForm(e){
 
 async function loadImages(){
   try{
-    const r=await fetch('https://jglkpcywzmmaetbxwllr.supabase.co/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
-      headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGtwY3l3em1tYWV0Ynh3bGxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyOTUyMjEsImV4cCI6MjA4ODg3MTIyMX0.7qL9gfM6Gjy5wBgxdlxqiW5-TXzwcOBpRcmskZw0jYQ'}
+    const r=await fetch(SB_URL+'/rest/v1/product_images?car_slug=eq.'+CAR_SLUG+'&select=*',{
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
     });
     const rows=await r.json();
     if(!rows||!rows.length)return;
@@ -318,7 +445,22 @@ async function loadImages(){
 
 function openModal(t){document.getElementById('modal-'+t).style.display='flex';}
 function closeModal(t){document.getElementById('modal-'+t).style.display='none';}
-function changeColor(el,src,name){
+
+function switchTab(tab) {
+  document.querySelectorAll('.color-tab').forEach((t,i)=>{
+    t.classList.toggle('active', ['sgx','gx','gl'][i]===tab);
+  });
+  document.querySelectorAll('.color-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+}
+function changeColor(tab, el, src, name) {
+  document.getElementById('cMain-'+tab).src = src;
+  document.getElementById('cLbl-'+tab).textContent = name;
+  el.closest('.color-thumbs').querySelectorAll('.color-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function changeColor_legacy(el,src,name){
   document.getElementById('cMain').src=src;
   document.getElementById('cName').textContent=name;
   document.querySelectorAll('.color-thumbs img').forEach(i=>i.classList.remove('active'));
