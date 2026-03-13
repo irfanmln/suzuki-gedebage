@@ -121,18 +121,18 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   
   <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
 </div><div class="hero">
-  <img id="heroImg" class="hero-img" src="" alt="Grand Vitara" style="display:none;">
-  <div id="heroPlaceholder" class="hero-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/grand-vitara.jpg" alt="Grand Vitara">
+  <div id="heroPlaceholder" class="hero-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
     <div class="hero-name">Grand Vitara</div>
     <div class="hero-price">MULAI 421.900.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>Grand Vitara kembali hadir dengan peningkatan memukau di segala aspek. Didesain untuk menemani setiap petualangan Anda dengan gaya yang elegan dan performa yang tangguh di berbagai medan.</p></div><div class="sec-banner">
   <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="extPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Excellence Escalated</div><div class="col-d">Hadir dengan desain eksterior yang semakin sporty dan maskulin, Grand Vitara mencerminkan semangat petualangan tanpa batas. Setiap lekukannya dirancang dengan presisi untuk memadukan estetika modern dengan fungsionalitas tinggi.</div></div><div class="sec-banner">
   <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="intPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>Excellent Convenience</h2><p>Nikmati kabin yang luas dan nyaman dengan teknologi terkini yang memanjakan seluruh penumpang. Interior Grand Vitara dirancang dengan detail premium yang menciptakan pengalaman berkendara tak terlupakan.</p></div><div class="color-sec">
   <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/grand-vitara/grand-vitara-pch.png" alt="color">
   <div id="cName" class="color-lbl">PEARL CELESTIAL BLUE</div>
@@ -217,7 +217,7 @@ async function loadImages(){
     if(d.img_hero){
       const heroImg=document.getElementById('heroImg');
       const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; heroImg.style.display='block'; }
+      if(heroImg){ heroImg.src=d.img_hero; }
       if(heroPlaceholder) heroPlaceholder.style.display='none';
     }
     if(d.img_exterior){

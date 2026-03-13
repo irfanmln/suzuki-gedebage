@@ -121,18 +121,18 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   
   <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
 </div><div class="hero">
-  <img id="heroImg" class="hero-img" src="" alt="APV" style="display:none;">
-  <div id="heroPlaceholder" class="hero-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/apv.jpg" alt="APV">
+  <div id="heroPlaceholder" class="hero-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
     <div class="hero-name">APV</div>
     <div class="hero-price">MULAI 228.200.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>Apapun bisa anda lakukan, mulai dari menyenangkan istri berbelanja, emanjakan anak-anak ke tempat rekreasi, berlibur bersama keluarga besar, hingga mengembangkan bisnis dan usaha. Berkendara terasa lebih aman dan nyaman.</p></div><div class="sec-banner">
   <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="extPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Semakin Berkelas dengan Tampilan Mewah</div><div class="col-d">Desain baru pada eksterior memiliki kesan yang elegan dan tangguh menjadikan New APV Arena sebagai mobil multifungsi untuk menemani setiap langkah anda.</div></div><div class="sec-banner">
   <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="intPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>Semakin Luas Dan Nyaman</h2><p>Desain baru pada Interior berkesan elegan dengan beragam fungsi, kenyamanan serta kemewahan yang berpadu sangat indah menjadikan APV Arena tak lekang oleh waktu.</p></div><div class="color-sec">
   <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/apv/apv-zzl.png" alt="color">
   <div id="cName" class="color-lbl">COOL BLACK METALLIC</div>
@@ -218,7 +218,7 @@ async function loadImages(){
     if(d.img_hero){
       const heroImg=document.getElementById('heroImg');
       const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; heroImg.style.display='block'; }
+      if(heroImg){ heroImg.src=d.img_hero; }
       if(heroPlaceholder) heroPlaceholder.style.display='none';
     }
     if(d.img_exterior){

@@ -121,18 +121,18 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   
   <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
 </div><div class="hero">
-  <img id="heroImg" class="hero-img" src="" alt="All New Ertiga" style="display:none;">
-  <div id="heroPlaceholder" class="hero-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/all-new-ertiga.jpg" alt="All New Ertiga">
+  <div id="heroPlaceholder" class="hero-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
     <div class="hero-name">All New Ertiga</div>
     <div class="hero-price">MULAI 241.750.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>All New Ertiga memiliki kabin yang luas untuk kenyamanan ekstra selama perjalanan. Kombinasi head unit yang canggih dengan aksen wooden panel membuat dashboard terasa mewah sekaligus elegan.</p></div><div class="sec-banner">
   <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="extPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Lapang, Mewah, Dan Nyaman</div><div class="col-d">Kami percaya berkendara bukan hanya sebuah perjalanan. Bersama keluarga, banyak cerita dan kehangatan tercipta dari sebuah perjalanan.</div></div><div class="sec-banner">
   <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="intPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>Elegant Interior</h2><p>Kenyamanan yang lebih baik menghabiskan waktu di perjalanan bersama keluarga semakin menyenangkan, dengan kabin yang lega serta jok yang nyaman bagaikan berada dalam ruang keluarga di rumah.</p></div><div class="color-sec">
   <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/ertiga/ertiga-zuf-zzl.png" alt="color">
   <div id="cName" class="color-lbl">PEARL SNOW WHITE + COOL BLACK</div>
@@ -222,7 +222,7 @@ async function loadImages(){
     if(d.img_hero){
       const heroImg=document.getElementById('heroImg');
       const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; heroImg.style.display='block'; }
+      if(heroImg){ heroImg.src=d.img_hero; }
       if(heroPlaceholder) heroPlaceholder.style.display='none';
     }
     if(d.img_exterior){

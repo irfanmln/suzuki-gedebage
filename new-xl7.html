@@ -121,18 +121,18 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   
   <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
 </div><div class="hero">
-  <img id="heroImg" class="hero-img" src="" alt="New XL7" style="display:none;">
-  <div id="heroPlaceholder" class="hero-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/xl7.jpg" alt="New XL7">
+  <div id="heroPlaceholder" class="hero-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
     <div class="hero-name">New XL7</div>
     <div class="hero-price">MULAI 269.900.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>Suzuki New XL7 hadir kembali dengan teknologi Smart Hybrid Vehicle by Suzuki (SHVS). Teknologi cerdas dari SHVS membuat New XL7 menjadi kendaraan ramah lingkungan. Nikmati perjalanan bersama keluarga dengan tampilan maskulin, tangguh, dan berkarakter.</p></div><div class="sec-banner">
   <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="extPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Tough and Masculine Design</div><div class="col-d">Suzuki New XL7 kini dengan tampilan eksterior yang tegas, stylish, dan maskulin mencerminkan ketangguhan dan pesona modern.</div></div><div class="sec-banner">
   <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="intPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>Extraordinary Interior Space</h2><p>Saatnya merasakan pengalaman baru berkendara dengan Suzuki New XL7. Kabin lebih luas ditambah dengan konsep interior yang premium akan memberikan kenyamanan yang sesungguhnya bersama keluarga.</p></div><div class="color-sec">
   <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/xl7/xl7-z3p.png" alt="color">
   <div id="cName" class="color-lbl">PEARL BRAVE KHAKI</div>
@@ -220,7 +220,7 @@ async function loadImages(){
     if(d.img_hero){
       const heroImg=document.getElementById('heroImg');
       const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; heroImg.style.display='block'; }
+      if(heroImg){ heroImg.src=d.img_hero; }
       if(heroPlaceholder) heroPlaceholder.style.display='none';
     }
     if(d.img_exterior){

@@ -121,18 +121,18 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   
   <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
 </div><div class="hero">
-  <img id="heroImg" class="hero-img" src="" alt="Fronx" style="display:none;">
-  <div id="heroPlaceholder" class="hero-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/fronx.jpg" alt="Fronx">
+  <div id="heroPlaceholder" class="hero-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
     <div class="hero-name">Fronx</div>
     <div class="hero-price">MULAI 261.800.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>Setiap perjalanan menjadi lebih aman untuk semua bersama Suzuki Fronx dengan teknologi Suzuki Safety Support.</p></div><div class="sec-banner">
   <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="extPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Feast On The Beauty From Any Angle</div><div class="col-d">Desain coupe-style SUV Suzuki Fronx yang elegan dan dinamis, memikat perhatian dari pandangan pertama.</div></div><div class="sec-banner">
   <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="intPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>A Scene Of Bliss That You Adore</h2><p>Didesain dengan mendetail untuk pengendara dan penumpang, interior Suzuki Fronx membuat perjalanan menjadi lebih nyaman.</p></div><div class="color-sec">
   <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/fronx/fronx-z4b-zzl.png" alt="color">
   <div id="cName" class="color-lbl">ICE GRAYISH BLUE - BLACK</div>
@@ -223,7 +223,7 @@ async function loadImages(){
     if(d.img_hero){
       const heroImg=document.getElementById('heroImg');
       const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; heroImg.style.display='block'; }
+      if(heroImg){ heroImg.src=d.img_hero; }
       if(heroPlaceholder) heroPlaceholder.style.display='none';
     }
     if(d.img_exterior){

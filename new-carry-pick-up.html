@@ -121,18 +121,18 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   
   <a href="https://wa.me/6285173340806" target="_blank">HUBUNGI KAMI</a>
 </div><div class="hero">
-  <img id="heroImg" class="hero-img" src="" alt="New Carry Pick Up" style="display:none;">
-  <div id="heroPlaceholder" class="hero-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <img id="heroImg" class="hero-img" src="https://www.suzuki.co.id/uploads/model/banner/carry-pick-up.jpg" alt="New Carry Pick Up">
+  <div id="heroPlaceholder" class="hero-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
   <div class="hero-overlay">
     <div class="hero-name">New Carry Pick Up</div>
     <div class="hero-price">MULAI 175.500.000 IDR</div>
   </div>
 </div><div class="sec-desc"><p>New Carry Pick Up hadir dengan tampilan baru yang semakin keren. Dilengkapi dengan desain grill dan bumper baru yang semakin tegas. Bikin pede bawa muatan dan kejar untung kemana pun.</p></div><div class="sec-banner">
   <img id="extImg" src="" alt="Eksterior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="extPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="extPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-2col"><div class="col-t">Tangguh dan Kuat Bawa Untung Bisnis Anda</div><div class="col-d">New Carry Pick Up kini dilengkapi dengan bak yang lebih luas dan sasis yang lebih kuat membuat kapasitas angkut hingga 1 ton. Hadir dalam varian wide deck dan flat deck yang lebih ekonomis dan dapat disesuaikan dengan bisnis Anda.</div></div><div class="sec-banner">
   <img id="intImg" src="" alt="Interior" style="display:none;width:100%;height:100%;object-fit:cover;">
-  <div id="intPlaceholder" class="sec-banner-placeholder">GAMBAR BELUM DIUPLOAD</div>
+  <div id="intPlaceholder" class="sec-banner-placeholder" style="display:none;">GAMBAR BELUM DIUPLOAD</div>
 </div><div class="sec-ct"><h2>Selalu Nyaman Saat Berkendara</h2><p>Kabin lega dengan kompartemen ergonomis bawa barang lebih praktis.</p></div><div class="color-sec">
   <img id="cMain" class="color-main" src="https://www.suzuki.co.id/themes/suzuki/images/new-carry/carry-zzl.png" alt="color">
   <div id="cName" class="color-lbl">REAL BLACK</div>
@@ -219,7 +219,7 @@ async function loadImages(){
     if(d.img_hero){
       const heroImg=document.getElementById('heroImg');
       const heroPlaceholder=document.getElementById('heroPlaceholder');
-      if(heroImg){ heroImg.src=d.img_hero; heroImg.style.display='block'; }
+      if(heroImg){ heroImg.src=d.img_hero; }
       if(heroPlaceholder) heroPlaceholder.style.display='none';
     }
     if(d.img_exterior){
