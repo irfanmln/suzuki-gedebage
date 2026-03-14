@@ -85,6 +85,27 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
 .color-empty{font-size:13px;color:#aaa;padding:16px 0;text-align:center;grid-column:1/-1;}
 .toast{position:fixed;bottom:24px;right:24px;background:#323232;color:#fff;padding:12px 24px;border-radius:6px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;}
 .toast.show{opacity:1;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .sidebar{width:100%;height:auto;position:relative;padding:0;}
+  .sidebar-logo{padding:12px 16px 12px;border-bottom:1px solid rgba(255,255,255,0.15);}
+  .sidebar-logo img{height:24px;}
+  .sidebar-menu{display:flex;flex-wrap:wrap;padding:4px 8px;gap:4px;}
+  .menu-label{display:none;}
+  .menu-item{padding:8px 12px;font-size:11px;gap:6px;border-radius:6px;}
+  .menu-item svg{width:14px;height:14px;}
+  .main{margin-left:0;padding:16px;}
+  .topbar{margin-bottom:16px;}
+  .topbar h1{font-size:16px;}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .stat-val{font-size:22px;}
+  .table th,.table td{padding:10px 12px;font-size:12px;}
+  .car-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .color-list{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));}
+  #adminApp{display:flex;flex-direction:column;}
+}
 </style>
 </head>
 <body>
@@ -124,6 +145,10 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
       <div class="menu-item" onclick="showPage('simulasi',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         Simulasi Kredit
+      </div>
+      <div class="menu-item" onclick="showPage('otr',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Update OTR
       </div>
     </div>
   </div>
@@ -173,6 +198,78 @@ body{font-family:'Montserrat',sans-serif;background:#f4f6fb;color:#222;}
       </div>
     </div>
 
+
+    <!-- OTR -->
+    <div id="page-otr" class="page">
+      <p style="font-size:14px;color:#666;margin-bottom:24px;">Update harga OTR setiap tipe. Klik Simpan untuk mengupdate halaman produk.</p>
+      <div class="car-grid" style="grid-template-columns:repeat(auto-fill,minmax(460px,1fr));">
+        <div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>Grand Vitara</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-grand-vitara"><tr><td><input class="otr-input" data-slug="grand-vitara" data-idx="0" value="GRAND VITARA MC SINGLE TONE"></td><td><input class="otr-input otr-price" data-slug="grand-vitara" data-idx="0" value="Rp 421.900.000"></td><td><button onclick="saveOTR('grand-vitara')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="grand-vitara" data-idx="1" value="GRAND VITARA MC TWO TONE"></td><td><input class="otr-input otr-price" data-slug="grand-vitara" data-idx="1" value="Rp 424.900.000"></td><td><button onclick="saveOTR('grand-vitara')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div><div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>S-Presso</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-s-presso"><tr><td><input class="otr-input" data-slug="s-presso" data-idx="0" value="S-PRESSO GA"></td><td><input class="otr-input otr-price" data-slug="s-presso" data-idx="0" value="Rp 176.600.000"></td><td><button onclick="saveOTR('s-presso')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="s-presso" data-idx="1" value="S-PRESSO GL MT"></td><td><input class="otr-input otr-price" data-slug="s-presso" data-idx="1" value="Rp 192.600.000"></td><td><button onclick="saveOTR('s-presso')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="s-presso" data-idx="2" value="S-PRESSO GL AT"></td><td><input class="otr-input otr-price" data-slug="s-presso" data-idx="2" value="Rp 203.600.000"></td><td><button onclick="saveOTR('s-presso')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div><div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>APV</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-apv"><tr><td><input class="otr-input" data-slug="apv" data-idx="0" value="APV GL"></td><td><input class="otr-input otr-price" data-slug="apv" data-idx="0" value="Rp 228.200.000"></td><td><button onclick="saveOTR('apv')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="apv" data-idx="1" value="APV GX"></td><td><input class="otr-input otr-price" data-slug="apv" data-idx="1" value="Rp 248.200.000"></td><td><button onclick="saveOTR('apv')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="apv" data-idx="2" value="APV SGX"></td><td><input class="otr-input otr-price" data-slug="apv" data-idx="2" value="Rp 260.700.000"></td><td><button onclick="saveOTR('apv')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div><div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>New XL7</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-new-xl7"><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="0" value="XL7 ZETA MT"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="0" value="Rp 269.900.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="1" value="XL7 ZETA AT"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="1" value="Rp 281.100.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="2" value="XL7 BETA MT HYBRID"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="2" value="Rp 292.200.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="3" value="XL7 BETA AT HYBRID"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="3" value="Rp 303.200.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="4" value="XL7 ALPHA MT HYBRID"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="4" value="Rp 308.200.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="5" value="XL7 ALPHA AT HYBRID"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="5" value="Rp 319.200.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="6" value="XL7 ALPHA AT HYBRID 2TONE"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="6" value="Rp 321.200.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="7" value="XL7 ALPHA KURO AT HYBRID"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="7" value="Rp 332.200.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-xl7" data-idx="8" value="XL7 ALPHA KURO AT HYBRID 2TONE"></td><td><input class="otr-input otr-price" data-slug="new-xl7" data-idx="8" value="Rp 334.200.000"></td><td><button onclick="saveOTR('new-xl7')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div><div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>Jimny</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-jimny"><tr><td><input class="otr-input" data-slug="jimny" data-idx="0" value="JIMNY 3 Door MT"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="0" value="Rp 511.550.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="1" value="JIMNY 3 Door AT"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="1" value="Rp 524.000.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="2" value="JIMNY 3 Door MT 2TONE"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="2" value="Rp 514.850.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="3" value="JIMNY 3 Door AT 2TONE"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="3" value="Rp 527.300.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="4" value="JIMNY 5 Door MT"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="4" value="Rp 496.100.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="5" value="JIMNY 5 Door AT"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="5" value="Rp 508.700.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="6" value="JIMNY 5 Door MT 2TONE"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="6" value="Rp 499.350.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="7" value="JIMNY 5 Door AT 2TONE"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="7" value="Rp 511.900.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="jimny" data-idx="8" value="JIMNY 5 Door AT White Rhino"></td><td><input class="otr-input otr-price" data-slug="jimny" data-idx="8" value="Rp 522.300.000"></td><td><button onclick="saveOTR('jimny')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div><div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>Fronx</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-fronx"><tr><td><input class="otr-input" data-slug="fronx" data-idx="0" value="FRONX GL MT"></td><td><input class="otr-input otr-price" data-slug="fronx" data-idx="0" value="Rp 261.800.000"></td><td><button onclick="saveOTR('fronx')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="fronx" data-idx="1" value="FRONX GL AT"></td><td><input class="otr-input otr-price" data-slug="fronx" data-idx="1" value="Rp 273.800.000"></td><td><button onclick="saveOTR('fronx')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="fronx" data-idx="2" value="FRONX GX MT"></td><td><input class="otr-input otr-price" data-slug="fronx" data-idx="2" value="Rp 278.800.000"></td><td><button onclick="saveOTR('fronx')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="fronx" data-idx="3" value="FRONX GX AT"></td><td><input class="otr-input otr-price" data-slug="fronx" data-idx="3" value="Rp 296.600.000"></td><td><button onclick="saveOTR('fronx')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="fronx" data-idx="4" value="FRONX SGX AT"></td><td><input class="otr-input otr-price" data-slug="fronx" data-idx="4" value="Rp 322.600.000"></td><td><button onclick="saveOTR('fronx')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="fronx" data-idx="5" value="FRONX SGX AT 2TONE"></td><td><input class="otr-input otr-price" data-slug="fronx" data-idx="5" value="Rp 324.600.000"></td><td><button onclick="saveOTR('fronx')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div><div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>All New Ertiga</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-all-new-ertiga"><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="0" value="ALL NEW ERTIGA GA"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="0" value="Rp 241.750.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="1" value="ALL NEW ERTIGA MC GL MT"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="1" value="Rp 265.350.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="2" value="ALL NEW ERTIGA MC GL AT"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="2" value="Rp 276.400.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="3" value="ALL NEW ERTIGA MC GX MT"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="3" value="Rp 282.000.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="4" value="ALL NEW ERTIGA MC GX AT"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="4" value="Rp 293.000.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="5" value="ALL NEW ERTIGA CRUISE MT"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="5" value="Rp 294.800.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="6" value="ALL NEW ERTIGA CRUISE MT 2TONE"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="6" value="Rp 296.800.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="7" value="ALL NEW ERTIGA CRUISE AT"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="7" value="Rp 305.700.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="all-new-ertiga" data-idx="8" value="ALL NEW ERTIGA CRUISE AT 2TONE"></td><td><input class="otr-input otr-price" data-slug="all-new-ertiga" data-idx="8" value="Rp 307.700.000"></td><td><button onclick="saveOTR('all-new-ertiga')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div><div class="car-card" style="margin-bottom:20px;">
+  <div class="car-card-header"><h3>New Carry Pick Up</h3></div>
+  <div class="car-card-body" style="padding:0;">
+    <table class="table">
+      <thead><tr><th>TIPE</th><th>HARGA OTR</th><th></th></tr></thead>
+      <tbody id="otr-new-carry-pick-up"><tr><td><input class="otr-input" data-slug="new-carry-pick-up" data-idx="0" value="NEW CARRY PICK UP STD"></td><td><input class="otr-input otr-price" data-slug="new-carry-pick-up" data-idx="0" value="Rp 193.500.000"></td><td><button onclick="saveOTR('new-carry-pick-up')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-carry-pick-up" data-idx="1" value="NEW CARRY PICK UP AC"></td><td><input class="otr-input otr-price" data-slug="new-carry-pick-up" data-idx="1" value="Rp 201.700.000"></td><td><button onclick="saveOTR('new-carry-pick-up')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr><tr><td><input class="otr-input" data-slug="new-carry-pick-up" data-idx="2" value="NEW CARRY PICK UP AC-PS"></td><td><input class="otr-input otr-price" data-slug="new-carry-pick-up" data-idx="2" value="Rp 212.500.000"></td><td><button onclick="saveOTR('new-carry-pick-up')" style="padding:6px 12px;background:#1a3a8f;color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;">Simpan</button></td></tr></tbody>
+    </table>
+  </div>
+</div>
+      </div>
+    </div>
     <!-- TEST DRIVE -->
     <div id="page-testdrive" class="page">
       <div class="card">
@@ -224,7 +321,7 @@ const CAR_GROUPS={
   'new-xl7':['Alpha Kuro','Alpha','Beta','Zeta'],
   'jimny':['3-Door','5-Door'],
   'fronx':['SGX 2TONE','SGX','GX','GL'],
-  'all-new-ertiga':['GX Hybrid','GL','GA'],
+  'all-new-ertiga':['GX Hybrid','GL','GA','Cruise'],
   'new-carry-pick-up':[''],
 };
 
@@ -273,7 +370,7 @@ async function showPage(name,el){
   document.querySelectorAll('.menu-item').forEach(m=>m.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   el.classList.add('active');
-  const titles={dashboard:'Dashboard',gambar:'Gambar Produk',warna:'Warna Mobil',testdrive:'Test Drive',simulasi:'Simulasi Kredit'};
+  const titles={dashboard:'Dashboard',gambar:'Gambar Produk',warna:'Warna Mobil',testdrive:'Test Drive',simulasi:'Simulasi Kredit',otr:'Update OTR'};
   document.getElementById('pageTitle').textContent=titles[name]||name;
   if(name==='testdrive')loadTDFull();
   if(name==='simulasi')loadSimFull();
@@ -520,6 +617,23 @@ async function deleteColor(id,slug){
     }
     toast('Warna berhasil dihapus!');
   }catch(err){toast('Gagal hapus: '+err.message,false);}
+}
+
+// OTR data storage (in-memory, update car page via localStorage key pattern)
+const OTR_PAGES={
+  'grand-vitara':'grand-vitara','s-presso':'s-presso','apv':'apv',
+  'new-xl7':'new-xl7','jimny':'jimny','fronx':'fronx',
+  'all-new-ertiga':'all-new-ertiga','new-carry-pick-up':'new-carry-pick-up'
+};
+function saveOTR(slug){
+  const rows=document.querySelectorAll(`#otr-${slug} tr`);
+  const data=[];
+  rows.forEach(tr=>{
+    const inputs=tr.querySelectorAll('input.otr-input');
+    if(inputs.length>=2) data.push({tipe:inputs[0].value,harga:inputs[1].value});
+  });
+  localStorage.setItem('otr_'+slug, JSON.stringify(data));
+  toast('OTR '+slug+' disimpan! Update halaman dengan copy-paste nilai ke file HTML.');
 }
 </script>
 </body>

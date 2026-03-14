@@ -103,7 +103,13 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   footer{padding:40px 20px 90px;}
   .color-main{width:260px;height:180px;}
 }
-
+@media(max-width:768px){
+  .hero{height:56vw;min-height:220px;}
+  .sec-banner{height:56vw;min-height:200px;margin-top:32px;}
+  .hero-name{font-size:28px;}
+  .hero-price{font-size:15px;}
+  .hero-overlay{padding:20px 16px;}
+}
 .ctabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;justify-content:center;}
 .ctab{padding:7px 18px;border:2px solid #1a3a8f;border-radius:20px;background:#fff;color:#1a3a8f;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:.2s;}
 .ctab.active,.ctab:hover{background:#1a3a8f;color:#fff;}
@@ -142,8 +148,8 @@ footer{background:#1a3a8f;color:#fff;padding:50px 80px 90px;}
   <div class="color-sec-title">PILIHAN WARNA</div>
   <div class="color-main-wrap"><img class="color-main" id="colorMainImg" src="" alt="" style="display:none;"></div>
   <div class="color-lbl" id="colorLbl"></div>
-  <div class="ctabs"><button class="ctab active" onclick="switchColorTab('GX Hybrid',this)">GX Hybrid</button><button class="ctab" onclick="switchColorTab('GL',this)">GL</button><button class="ctab" onclick="switchColorTab('GA',this)">GA</button></div>
-  <div class="ctab-panel active" id="cpanel-GX Hybrid"><div class="color-thumbs" id="colorThumbs-GX Hybrid"></div></div><div class="ctab-panel" id="cpanel-GL"><div class="color-thumbs" id="colorThumbs-GL"></div></div><div class="ctab-panel" id="cpanel-GA"><div class="color-thumbs" id="colorThumbs-GA"></div></div>
+  <div class="ctabs"><button class="ctab active" onclick="switchColorTab('GX Hybrid',this)">GX Hybrid</button><button class="ctab" onclick="switchColorTab('GL',this)">GL</button><button class="ctab" onclick="switchColorTab('GA',this)">GA</button><button class="ctab" onclick="switchColorTab('Cruise',this)">Cruise</button></div>
+  <div class="ctab-panel active" id="cpanel-GX Hybrid"><div class="color-thumbs" id="colorThumbs-GX Hybrid"></div></div><div class="ctab-panel" id="cpanel-GL"><div class="color-thumbs" id="colorThumbs-GL"></div></div><div class="ctab-panel" id="cpanel-GA"><div class="color-thumbs" id="colorThumbs-GA"></div></div><div class="ctab-panel" id="cpanel-Cruise"><div class="color-thumbs" id="colorThumbs-Cruise"></div></div>
 </div><div class="harga-sec">
   <h2>HARGA</h2>
   <table class="htable">
